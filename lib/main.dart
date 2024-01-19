@@ -1,9 +1,14 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/core/di.dart';
 import 'package:myapp/core/router.dart';
 import 'package:myapp/core/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  initDi();
+
   runApp(const InitialApp());
 }
 

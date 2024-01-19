@@ -1,87 +1,79 @@
 import 'package:flutter/material.dart';
-
-const datas = [
-  {
-    "id": "metal-rouge-sub-indo",
-    "title": "Metallic Rouge",
-    "thumbnail":
-        "https://otakudesu.media/wp-content/uploads/2024/01/Metallic-Rouge-Sub-Indo.jpg",
-    "url": "https://otakudesu.media/anime/metal-rouge-sub-indo/",
-    "episode": " Episode 2"
-  },
-  {
-    "id": "sengoku-youko-sub-indo",
-    "title": "Sengoku Youko",
-    "thumbnail":
-        "https://otakudesu.media/wp-content/uploads/2024/01/Sengoku-Youko.jpg",
-    "url": "https://otakudesu.media/anime/sengoku-youko-sub-indo/",
-    "episode": " Episode 2"
-  },
-  {
-    "id": "mahou-shoujo-akogarete-sub-indo",
-    "title": "Mahou Shoujo ni Akogarete",
-    "thumbnail":
-        "https://otakudesu.media/wp-content/uploads/2024/01/139414l.jpg",
-    "url": "https://otakudesu.media/anime/mahou-shoujo-akogarete-sub-indo/",
-    "episode": " Episode 3"
-  },
-  {
-    "id": "ishura-sub-indo",
-    "title": "Ishura",
-    "thumbnail":
-        "https://otakudesu.media/wp-content/uploads/2024/01/140122.jpg",
-    "url": "https://otakudesu.media/anime/ishura-sub-indo/",
-    "episode": " Episode 3"
-  },
-  {
-    "id": "youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-s3-sub-indo",
-    "title": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e Season 3",
-    "thumbnail":
-        "https://otakudesu.media/wp-content/uploads/2024/01/Youkoso-Jitsuryoku-Shijou-Shugi-no-Kyoushitsu-e-Season-3-Sub-Indo.jpg",
-    "url":
-        "https://otakudesu.media/anime/youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-s3-sub-indo/",
-    "episode": " Episode 3"
-  },
-  {
-    "id": "gekai-elise-sub-indo",
-    "title": "Gekai Elise",
-    "thumbnail":
-        "https://otakudesu.media/wp-content/uploads/2024/01/Gekai-Elise.jpg",
-    "url": "https://otakudesu.media/anime/gekai-elise-sub-indo/",
-    "episode": " Episode 2"
-  },
-];
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:myapp/features/anime_list/anime_list_screen.dart';
+import 'package:myapp/features/genre_list/genre_screen.dart';
+import 'package:myapp/features/homepage/bloc/homepage_bloc.dart';
+import 'package:myapp/features/homepage/widget/body_widget.dart';
+import 'package:myapp/features/homepage/widget/option_chip.dart';
+import 'package:myapp/global/widget/error_widget.dart';
+import 'package:myapp/global/widget/loading_widget.dart';
 
 class HomePageScreen extends StatelessWidget {
   const HomePageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final chipItem = [
+      OptionChip(
+        text: 'Anime List',
+        onPressed: () => context.push(AnimeListScreen.routeName),
+      ),
+      OptionChip(
+        text: 'Genre',
+        onPressed: () => context.push(GenreScreen.routeName),
+      ),
+      const OptionChip(text: 'Complete'),
+      const OptionChip(text: 'Ongoing'),
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Otakudesu'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.3,
-              child: ListView.builder(
-                  itemCount: datas.length,
-                  itemBuilder: (context, index) {
-                    final data = datas[index];
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        image: DecorationImage(
-                          image: NetworkImage(data['thumbnail'] ?? ''),
-                        ),
-                      ),
-                    );
-                  }),
-            )
-          ],
+        title: const TextField(
+          decoration: InputDecoration(
+            hintText: 'Search',
+            suffixIcon: Icon(Icons.search),
+          ),
         ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(40),
+          child: Container(
+            width: double.infinity,
+            height: 40,
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: chipItem.length,
+              separatorBuilder: (context, index) {
+                return const SizedBox(width: 8);
+              },
+              itemBuilder: (context, index) {
+                return chipItem[index];
+              },
+            ),
+          ),
+        ),
+      ),
+      body: BlocBuilder<HomepageBloc, HomepageState>(
+        builder: (context, state) {
+          if (state is LoadingHomepageState) {
+            return const LoadingWidget();
+          }
+
+          if (state is ErrorHomepageState) {
+            return AppErrorWidget(
+              message: state.message,
+            );
+          }
+
+          if (state is LoadedHomepageState) {
+            return BodyWidget(data: state.anime);
+          }
+
+          return const SizedBox();
+        },
       ),
     );
   }

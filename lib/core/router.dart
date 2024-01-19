@@ -1,6 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/core/logger.dart';
-import 'package:myapp/features/homepage/homepage_screen.dart';
+import 'package:myapp/features/anime_list/anime_list_screen.dart';
+import 'package:myapp/features/bookmark/bookmark_screen.dart';
+import 'package:myapp/features/detail/detail_initial.dart';
+import 'package:myapp/features/detail/detail_screen.dart';
+import 'package:myapp/features/genre_list/genre_screen.dart';
+import 'package:myapp/features/history/history_screen.dart';
+import 'package:myapp/features/homepage/homepage_initial.dart';
+import 'package:myapp/features/root_screen.dart';
+
+// navigator
+final _rootNavigator = GlobalKey<NavigatorState>();
+final _shellHomeNavigator = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
   redirect: (context, state) {
@@ -9,10 +21,70 @@ final router = GoRouter(
 
     return null;
   },
+  navigatorKey: _rootNavigator,
+  initialLocation: '/',
   routes: [
+    ...homeRouter,
     GoRoute(
-      path: '/',
-      builder: (context, state) => const HomePageScreen(),
+      path: DetailScreen.routePath,
+      name: DetailScreen.routeName,
+      builder: (context, state) {
+        final id = state.pathParameters['id']!;
+
+        return DetailInitial(
+          animeId: id,
+        );
+      },
+    ),
+    GoRoute(
+      path: AnimeListScreen.routeName,
+      builder: (context, state) {
+        return const AnimeListScreen();
+      },
+    ),
+    GoRoute(
+      path: GenreScreen.routeName,
+      builder: (context, state) {
+        return const GenreScreen();
+      },
     ),
   ],
 );
+
+// route for shell home
+final homeRouter = [
+  ShellRoute(
+    navigatorKey: _shellHomeNavigator,
+    pageBuilder: (context, state, child) {
+      return NoTransitionPage(
+        child: RootScreen(
+          location: state.uri.path,
+          child: child,
+        ),
+      );
+    },
+    routes: [
+      GoRoute(
+        path: HomePageInitial.routeName,
+        parentNavigatorKey: _shellHomeNavigator,
+        builder: (context, state) {
+          return const HomePageInitial();
+        },
+      ),
+      GoRoute(
+        path: BookmarkScreen.routeName,
+        parentNavigatorKey: _shellHomeNavigator,
+        builder: (context, state) {
+          return const BookmarkScreen();
+        },
+      ),
+      GoRoute(
+        path: HistoryScreen.routeName,
+        parentNavigatorKey: _shellHomeNavigator,
+        builder: (context, state) {
+          return const HistoryScreen();
+        },
+      ),
+    ],
+  ),
+];
