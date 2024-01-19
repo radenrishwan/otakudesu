@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/features/detail/bloc/detail_bloc.dart';
 import 'package:myapp/features/detail/detail_model.dart';
+import 'package:myapp/features/detail/widget/episode_widget.dart';
 import 'package:myapp/features/detail/widget/genre_chip.dart';
 import 'package:myapp/features/detail/widget/info_widget.dart';
 import 'package:myapp/global/const.dart';
@@ -100,7 +101,7 @@ class BodyWidget extends StatelessWidget {
                     children: [
                       Text(
                         "${anime.releaseDate} | ${anime.episode.isNotEmpty ? "${anime.episode.length} Episode" : '(episode not available)'}",
-                        style: kTypographyTitleStyle,
+                        style: kTypographySubtitleStyle.copyWith(fontSize: 14),
                       ),
                       Row(
                         children: [
@@ -166,37 +167,10 @@ class BodyWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(
-                      anime.episode.length,
-                      (index) {
-                        final episode = anime.episode[index];
-                        return ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Text(
-                            episode.episode,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: kTypographyTitleStyle,
-                          ),
-                          subtitle: Text(
-                            episode.uploadDate,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: kTypographySubtitleStyle,
-                          ),
-                          trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.play_arrow,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  )
+                  EpisodeWidget(
+                    episodes: anime.episode,
+                    title: anime.title,
+                  ),
                 ],
               ),
             ),

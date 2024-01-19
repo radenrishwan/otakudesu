@@ -5,6 +5,7 @@ import 'package:myapp/features/anime_list/anime_list_screen.dart';
 import 'package:myapp/features/bookmark/bookmark_screen.dart';
 import 'package:myapp/features/detail/detail_initial.dart';
 import 'package:myapp/features/detail/detail_screen.dart';
+import 'package:myapp/features/episode/episode_initial.dart';
 import 'package:myapp/features/genre_list/genre_screen.dart';
 import 'package:myapp/features/history/history_screen.dart';
 import 'package:myapp/features/homepage/homepage_initial.dart';
@@ -25,17 +26,7 @@ final router = GoRouter(
   initialLocation: '/',
   routes: [
     ...homeRouter,
-    GoRoute(
-      path: DetailScreen.routePath,
-      name: DetailScreen.routeName,
-      builder: (context, state) {
-        final id = state.pathParameters['id']!;
-
-        return DetailInitial(
-          animeId: id,
-        );
-      },
-    ),
+    ...detailRouter,
     GoRoute(
       path: AnimeListScreen.routeName,
       builder: (context, state) {
@@ -86,5 +77,29 @@ final homeRouter = [
         },
       ),
     ],
+  ),
+];
+
+// router for anime detail
+final detailRouter = [
+  GoRoute(
+    path: DetailScreen.routePath,
+    name: DetailScreen.routeName,
+    builder: (context, state) {
+      final id = state.pathParameters['id']!;
+
+      return DetailInitial(
+        animeId: id,
+      );
+    },
+  ),
+  GoRoute(
+    path: EpisodeInitial.routePath,
+    name: EpisodeInitial.routeName,
+    builder: (context, state) {
+      final id = state.pathParameters['id']!;
+
+      return EpisodeInitial(id: id);
+    },
   ),
 ];

@@ -11,7 +11,7 @@ part 'detail_state.dart';
 
 class DetailBloc extends Bloc<DetailEvent, DetailState> {
   DetailBloc() : super(const DetailState.loading()) {
-    on<DetailEvent>((event, emit) async {
+    on<_LoadEvent>((event, emit) async {
       emit(const DetailState.loading());
 
       final service = di.get<DetailService>();

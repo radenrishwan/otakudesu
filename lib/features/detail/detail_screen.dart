@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/features/detail/bloc/detail_bloc.dart';
 import 'package:myapp/features/detail/widget/body_widget.dart';
-import 'package:myapp/global/const.dart';
+import 'package:myapp/global/widget/appbar_text.dart';
 import 'package:myapp/global/widget/back_button.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
@@ -22,30 +22,15 @@ class DetailScreen extends StatelessWidget {
         title: BlocBuilder<DetailBloc, DetailState>(
           builder: (context, state) {
             if (state is LoadedDetailState) {
-              return Text(
-                state.anime.title,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: kTitleStyle.copyWith(color: Colors.white),
-              );
+              return AppBarText(text: state.anime.title);
             }
 
             if (state is ErrorDetailState) {
-              return Text(
-                "Error",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: kTitleStyle.copyWith(color: Colors.white),
-              );
+              return const AppBarText(text: 'Error');
             }
 
             if (state is LoadingDetailState) {
-              return Text(
-                "Anime Detail",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: kTitleStyle.copyWith(color: Colors.white),
-              );
+              return const AppBarText(text: 'Anime Detail');
             }
 
             return const SizedBox();

@@ -10,7 +10,7 @@ class GenreChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withOpacity(0.2),
+        color: Theme.of(context).primaryColor.withOpacity(0.4),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
@@ -18,6 +18,7 @@ class GenreChip extends StatelessWidget {
         style: const TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.w500,
+          color: Colors.white,
         ),
       ),
     );

@@ -11,7 +11,8 @@ class AppErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.all(16),
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -24,7 +25,7 @@ class AppErrorWidget extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             message,
-            style: kTitleStyle,
+            style: kTypographySubtitleStyle,
             textAlign: TextAlign.center,
           ),
         ],
