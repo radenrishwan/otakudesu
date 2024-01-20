@@ -254,14 +254,14 @@ class __$$SaveHistoryEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? history = freezed,
+    Object? history = null,
   }) {
     return _then(_$SaveHistoryEventImpl(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      freezed == history
+      null == history
           ? _value.history
           : history // ignore: cast_nullable_to_non_nullable
               as History,
@@ -290,12 +290,11 @@ class _$SaveHistoryEventImpl implements _SaveHistoryEvent {
         (other.runtimeType == runtimeType &&
             other is _$SaveHistoryEventImpl &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other.history, history));
+            (identical(other.history, history) || other.history == history));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, const DeepCollectionEquality().hash(history));
+  int get hashCode => Object.hash(runtimeType, id, history);
 
   @JsonKey(ignore: true)
   @override
