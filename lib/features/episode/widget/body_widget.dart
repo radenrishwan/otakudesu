@@ -53,6 +53,7 @@ class BodyWidget extends StatelessWidget {
                     builder: (_, value, __) {
                       return value
                           ? LinearProgressIndicator(
+                              minHeight: 5,
                               color: Theme.of(context).colorScheme.primary,
                             )
                           : const SizedBox.shrink();

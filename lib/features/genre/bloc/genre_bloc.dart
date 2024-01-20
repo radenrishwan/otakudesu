@@ -16,18 +16,22 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
 
       final service = di.get<GenreService>();
       try {
-        final data = await service.getAnimeByGenre(event.genre);
+        final data = await service.getAnimeByGenre(event.genre, 1);
 
         emit(
-          GenreState.loaded(
-            data: data,
-            searchData: data,
-          ),
+          GenreState.loaded(data: data, searchData: data, page: 1, message: ''),
         );
       } catch (e) {
         logger.e(e.toString());
-        emit(const GenreState.error(
-            "Failed to load genre data, please try again or check your internet connection"));
+        emit(
+          const GenreState.error(
+            message:
+                "Failed to load genre data, please try again or check your internet connection",
+            data: [],
+            searchData: [],
+            page: 1,
+          ),
+        );
       }
     });
 
@@ -40,7 +44,39 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
                 element.title.toLowerCase().contains(event.query.toLowerCase()))
             .toList();
 
-        emit(GenreState.loaded(data: filteredData, searchData: data));
+        emit(state.copyWith(data: filteredData));
+      }
+    });
+
+    on<_LoadMoreEvent>((event, emit) async {
+      final state = this.state;
+      if (state is LoadedGenreState) {
+        emit(state.copyWith(message: 'loading'));
+
+        final service = di.get<GenreService>();
+        final data = (state).data;
+        final page = (state).page;
+
+        try {
+          final newData = await service.getAnimeByGenre(event.genre, page + 1);
+
+          emit(
+            state.copyWith(
+              message: '',
+              data: [...data, ...newData],
+              searchData: [...data, ...newData],
+              page: page + 1,
+            ),
+          );
+        } catch (e) {
+          logger.e(e.toString());
+          emit(
+            state.copyWith(
+              message:
+                  "Maybe you've reached the end of the list or there's an error, please try again later",
+            ),
+          );
+        }
       }
     });
   }

@@ -81,7 +81,7 @@ class GenreListScreen extends StatelessWidget {
                                   },
                                   contentPadding: EdgeInsets.zero,
                                   dense: true,
-                                  title: Text(genre),
+                                  title: Text(genre.replaceAll('-', ' ')),
                                   trailing: const Icon(Icons.arrow_forward_ios,
                                       size: 16),
                                 );
