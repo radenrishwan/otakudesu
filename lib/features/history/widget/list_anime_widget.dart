@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/global/data/domain/anime.dart';
+import 'package:myapp/global/data/model/anime.dart';
 import 'package:myapp/global/widget/anime_list_tile.dart';
 
 class ListAnimeWidget extends StatelessWidget {

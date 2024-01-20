@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:myapp/core/di.dart';
 import 'package:myapp/core/logger.dart';
+import 'package:myapp/features/genre/genre_initial.dart';
 import 'package:myapp/features/genre_list/genre_list_service.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
 
-class GenreScreen extends StatelessWidget {
-  static const routeName = '/genre';
+class GenreListScreen extends StatelessWidget {
+  static const routeName = '/genre-list';
 
-  const GenreScreen({super.key});
+  const GenreListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +71,14 @@ class GenreScreen extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 final genre = datas.value[index];
                                 return ListTile(
+                                  onTap: () {
+                                    context.pushNamed(
+                                      GenreInitial.routeName,
+                                      pathParameters: {
+                                        'genre': genre,
+                                      },
+                                    );
+                                  },
                                   contentPadding: EdgeInsets.zero,
                                   dense: true,
                                   title: Text(genre),

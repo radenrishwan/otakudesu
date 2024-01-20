@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/features/detail/detail_screen.dart';
 import 'package:myapp/features/homepage/widget/ongoing_anime_card.dart';
-import 'package:myapp/global/data/domain/anime.dart';
+import 'package:myapp/global/data/model/anime.dart';
 
 class OngoingWidget extends StatelessWidget {
   final List<Anime> datas;

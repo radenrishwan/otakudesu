@@ -1,4 +1,4 @@
-import 'package:myapp/global/data/domain/anime.dart';
+import 'package:myapp/global/data/model/anime.dart';
 
 class AnimeHomepage {
   List<Anime> ongoing;

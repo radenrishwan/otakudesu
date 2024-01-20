@@ -6,6 +6,7 @@ import 'package:myapp/features/bookmark/bookmark_screen.dart';
 import 'package:myapp/features/detail/detail_initial.dart';
 import 'package:myapp/features/detail/detail_screen.dart';
 import 'package:myapp/features/episode/episode_initial.dart';
+import 'package:myapp/features/genre/genre_initial.dart';
 import 'package:myapp/features/genre_list/genre_list_screen.dart';
 import 'package:myapp/features/history/history_screen.dart';
 import 'package:myapp/features/homepage/homepage_initial.dart';
@@ -27,16 +28,11 @@ final router = GoRouter(
   routes: [
     ...homeRouter,
     ...detailRouter,
+    ...genreRouter,
     GoRoute(
       path: AnimeListInitial.routeName,
       builder: (context, state) {
         return const AnimeListInitial();
-      },
-    ),
-    GoRoute(
-      path: GenreScreen.routeName,
-      builder: (context, state) {
-        return const GenreScreen();
       },
     ),
   ],
@@ -102,4 +98,23 @@ final detailRouter = [
       return EpisodeInitial(id: id);
     },
   ),
+];
+
+// router for genre
+final genreRouter = [
+  GoRoute(
+    path: GenreInitial.routePath,
+    name: GenreInitial.routeName,
+    builder: (context, state) {
+      final genre = state.pathParameters['genre'] ?? '';
+
+      return GenreInitial(genre: genre);
+    },
+  ),
+  GoRoute(
+    path: GenreListScreen.routeName,
+    builder: (context, state) {
+      return const GenreListScreen();
+    },
+  )
 ];

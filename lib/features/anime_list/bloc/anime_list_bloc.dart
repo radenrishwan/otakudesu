@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:myapp/core/di.dart';
 import 'package:myapp/core/logger.dart';
+import 'package:myapp/features/anime_list/anime_list_model.dart';
 import 'package:myapp/features/anime_list/anime_list_service.dart';
-import 'package:myapp/features/anime_list/model/anime_list.dart';
 
 part 'anime_list_bloc.freezed.dart';
 part 'anime_list_event.dart';

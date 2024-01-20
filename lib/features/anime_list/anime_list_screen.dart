@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:myapp/features/anime_list/bloc/anime_list_bloc.dart';
 import 'package:myapp/features/detail/detail_screen.dart';
 import 'package:myapp/global/const.dart';
-import 'package:myapp/global/data/domain/anime_list.dart';
 import 'package:myapp/global/widget/back_button.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
@@ -56,18 +55,19 @@ class AnimeListScreen extends StatelessWidget {
                   if (index == 0) {
                     final firstLetter = anime.title.toString()[0];
 
-                    return buildDivider(context, firstLetter, anime.title);
+                    return buildDivider(
+                        context, firstLetter, anime.title, anime.id);
                   }
 
                   // check if current first letter is different from previous first letter
                   if (index > 0) {
                     final currentFirstLetter = anime.title.toString()[0];
                     final previousFirstLetter =
-                        animeListDataDummy[index - 1]['title'].toString()[0];
+                        state.data[index - 1].title.toString()[0];
 
                     if (currentFirstLetter != previousFirstLetter) {
-                      return buildDivider(
-                          context, currentFirstLetter, anime.title.toString());
+                      return buildDivider(context, currentFirstLetter,
+                          anime.title.toString(), anime.id);
                     }
                   }
 
@@ -78,9 +78,16 @@ class AnimeListScreen extends StatelessWidget {
                         'id': anime.id.toString(),
                       });
                     },
-                    child: Text(
-                      anime.title.toString(),
-                      style: kTypographyTitleStyle,
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: Text(
+                        anime.title.toString(),
+                        style: kTypographyTitleStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -94,7 +101,8 @@ class AnimeListScreen extends StatelessWidget {
     );
   }
 
-  Widget buildDivider(BuildContext context, String title, String content) {
+  Widget buildDivider(
+      BuildContext context, String title, String content, String id) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -109,10 +117,22 @@ class AnimeListScreen extends StatelessWidget {
           thickness: 1,
         ),
         const SizedBox(height: 8),
-        Text(
-          content,
-          style: kTypographyTitleStyle.copyWith(
-            fontWeight: FontWeight.w500,
+        InkWell(
+          onTap: () {
+            context.pushNamed(DetailScreen.routeName, pathParameters: {
+              'id': id,
+            });
+          },
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Text(
+              content,
+              style: kTypographyTitleStyle.copyWith(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
           ),
         ),
       ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/global/const.dart';
-import 'package:myapp/global/data/domain/anime.dart';
+import 'package:myapp/global/data/model/anime.dart';
 import 'package:myapp/global/widget/image_widget.dart';
 
 class AnimeListTitle extends StatelessWidget {

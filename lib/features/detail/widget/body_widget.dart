@@ -64,11 +64,15 @@ class BodyWidget extends StatelessWidget {
                         const SizedBox(height: 4),
                         Wrap(
                           spacing: 4,
-                          children: splitGenre(anime.genre)
-                              .map(
-                                (e) => GenreChip(genre: e),
-                              )
-                              .toList(),
+                          children: splitGenre(anime.genre).map(
+                            (e) {
+                              if (e == '') {
+                                return const SizedBox.shrink();
+                              }
+
+                              return GenreChip(genre: e);
+                            },
+                          ).toList(),
                         ),
                         const SizedBox(height: 4),
                         Text(

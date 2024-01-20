@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/features/bookmark/widget/list_anime_widget.dart';
-import 'package:myapp/global/data/domain/anime.dart';
+import 'package:myapp/global/data/model/anime.dart';
 
 class BookmarkScreen extends StatelessWidget {
   static const routeName = '/bookmark';

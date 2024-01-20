@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/features/history/widget/list_anime_widget.dart';
-import 'package:myapp/global/data/domain/anime.dart';
+import 'package:myapp/global/data/model/anime.dart';
 
 class HistoryScreen extends StatelessWidget {
   static const routeName = '/history';

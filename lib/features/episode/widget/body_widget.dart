@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:myapp/features/episode/bloc/episode_bloc.dart';
-import 'package:myapp/features/episode/model/episode.dart';
+import 'package:myapp/features/episode/episode_model.dart';
 import 'package:myapp/global/const.dart';
 import 'package:url_launcher/url_launcher.dart';
 

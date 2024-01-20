@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:myapp/core/api.dart';
-import 'package:myapp/features/anime_list/model/anime_list.dart';
+import 'package:myapp/features/anime_list/anime_list_model.dart';
 
 class AnimeListService {
   Future<List<AnimeListData>> getListAnime() async {

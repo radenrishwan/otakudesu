@@ -21,7 +21,7 @@ class HomePageScreen extends StatelessWidget {
       ),
       OptionChip(
         text: 'Genre',
-        onPressed: () => context.push(GenreScreen.routeName),
+        onPressed: () => context.push(GenreListScreen.routeName),
       ),
       const OptionChip(text: 'Complete'),
       const OptionChip(text: 'Ongoing'),
