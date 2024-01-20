@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/features/complete_ongoing/complete_initial.dart';
+import 'package:myapp/features/history/history_screen.dart';
 import 'package:myapp/features/homepage/bloc/homepage_bloc.dart';
 import 'package:myapp/features/homepage/homepage_model.dart';
 import 'package:myapp/features/homepage/widget/complete_anime_widget.dart';
 import 'package:myapp/features/homepage/widget/header_widget.dart';
+import 'package:myapp/features/homepage/widget/history_widget.dart';
 import 'package:myapp/features/homepage/widget/ongoing_widget.dart';
 import 'package:myapp/global/const.dart';
+import 'package:myapp/global/data/domain/history.dart';
 
 class BodyWidget extends StatelessWidget {
   final AnimeHomepage data;
@@ -26,22 +30,36 @@ class BodyWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // HeaderWidget(
-              //   title: 'Latest Watched',
-              //   onPressed: () => context.go(HistoryScreen.routeName),
-              //   icon: const Text(
-              //     'See All',
-              //     style: TextStyle(
-              //       color: Colors.blue,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
-              // const SizedBox(height: 18),
-              // OngoingWidget( // TODO: implement later
-              //   datas: data.ongoing,
-              // ),
-              const SizedBox(height: 18),
+              ValueListenableBuilder(
+                  valueListenable:
+                      Hive.box<History>(History.boxName).listenable(),
+                  builder: (context, value, _) {
+                    if (value.isEmpty) {
+                      return const SizedBox.shrink();
+                    }
+
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HeaderWidget(
+                          title: 'Latest Watched',
+                          onPressed: () => context.go(HistoryScreen.routeName),
+                          icon: Text(
+                            'See All',
+                            style: kTypographySubtitleStyle.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 18),
+                        HistoryWidget(
+                          data: value.values.toList(),
+                        ),
+                        const SizedBox(height: 18),
+                      ],
+                    );
+                  }),
               HeaderWidget(
                 onPressed: () {
                   context

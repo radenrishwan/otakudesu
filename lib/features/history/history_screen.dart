@@ -13,9 +13,23 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final box = Hive.box<History>(History.boxName);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('History'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              box.clear();
+            },
+            icon: Icon(
+              Icons.delete,
+              color: Theme.of(context).colorScheme.primary,
+              size: 18,
+            ),
+          ),
+        ],
       ),
       body: ValueListenableBuilder(
         valueListenable: Hive.box<History>(History.boxName).listenable(),
