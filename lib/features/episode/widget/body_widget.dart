@@ -40,6 +40,7 @@ class BodyWidget extends StatelessWidget {
         context.read<EpisodeBloc>().add(EpisodeEvent.load(episode.id));
       },
       child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

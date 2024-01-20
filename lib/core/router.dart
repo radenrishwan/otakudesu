@@ -13,6 +13,7 @@ import 'package:myapp/features/genre_list/genre_list_screen.dart';
 import 'package:myapp/features/history/history_screen.dart';
 import 'package:myapp/features/homepage/homepage_initial.dart';
 import 'package:myapp/features/root_screen.dart';
+import 'package:myapp/features/search/search_initial.dart';
 
 // navigator
 final _rootNavigator = GlobalKey<NavigatorState>();
@@ -49,6 +50,15 @@ final router = GoRouter(
         }
       },
     ),
+    GoRoute(
+      name: SearchInitital.routeName,
+      path: SearchInitital.routePath,
+      builder: (context, state) {
+        final query = state.pathParameters['query'] ?? '';
+
+        return SearchInitital(query: query);
+      },
+    )
   ],
 );
 

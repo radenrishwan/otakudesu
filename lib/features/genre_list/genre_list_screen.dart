@@ -4,6 +4,7 @@ import 'package:myapp/core/di.dart';
 import 'package:myapp/core/logger.dart';
 import 'package:myapp/features/genre/genre_initial.dart';
 import 'package:myapp/features/genre_list/genre_list_service.dart';
+import 'package:myapp/global/widget/appbar_text.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
 
@@ -18,7 +19,8 @@ class GenreListScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Genre'),
+        title: const AppBarText(text: 'Genre List'),
+        centerTitle: true,
       ),
       body: FutureBuilder(
           future: di.get<GenreListService>().getGenres(),
@@ -63,6 +65,7 @@ class GenreListScreen extends StatelessWidget {
                                   'Error when loading genre list, please try again later',
                             )
                           : ListView.separated(
+                              physics: const AlwaysScrollableScrollPhysics(),
                               padding: const EdgeInsets.all(8),
                               itemCount: datas.value.length,
                               separatorBuilder: (context, index) {

@@ -1,4 +1,3 @@
-import 'package:animated_search_bar/animated_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -8,9 +7,10 @@ import 'package:myapp/features/genre_list/genre_list_screen.dart';
 import 'package:myapp/features/homepage/bloc/homepage_bloc.dart';
 import 'package:myapp/features/homepage/widget/body_widget.dart';
 import 'package:myapp/features/homepage/widget/option_chip.dart';
-import 'package:myapp/global/const.dart';
+import 'package:myapp/features/search/search_initial.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
+import 'package:myapp/global/widget/search_bar.dart';
 
 class HomePageScreen extends StatelessWidget {
   const HomePageScreen({super.key});
@@ -44,12 +44,12 @@ class HomePageScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: AnimatedSearchBar(
+        title: AppSearchBar(
           label: 'Otakudesu',
-          labelAlignment: Alignment.center,
-          labelStyle: kTitleStyle.copyWith(color: Colors.black),
           onFieldSubmitted: (value) {
-            // move into search page
+            context.pushNamed(SearchInitital.routeName, pathParameters: {
+              'query': value,
+            });
           },
         ),
         bottom: PreferredSize(

@@ -22,6 +22,7 @@ class BodyWidget extends StatelessWidget {
         context.read<DetailBloc>().add(DetailEvent.load(anime.id));
       },
       child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -62,17 +63,22 @@ class BodyWidget extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 4),
-                        Wrap(
-                          spacing: 4,
-                          children: splitGenre(anime.genre).map(
-                            (e) {
-                              if (e == '') {
-                                return const SizedBox.shrink();
-                              }
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: Wrap(
+                            spacing: 4,
+                            runSpacing: 4,
+                            alignment: WrapAlignment.center,
+                            children: splitGenre(anime.genre).map(
+                              (e) {
+                                if (e == '') {
+                                  return const SizedBox.shrink();
+                                }
 
-                              return GenreChip(genre: e);
-                            },
-                          ).toList(),
+                                return GenreChip(genre: e);
+                              },
+                            ).toList(),
+                          ),
                         ),
                         const SizedBox(height: 4),
                         Text(

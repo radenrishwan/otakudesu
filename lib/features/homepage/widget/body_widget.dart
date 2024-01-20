@@ -20,6 +20,7 @@ class BodyWidget extends StatelessWidget {
         context.read<HomepageBloc>().add(const HomepageEvent.load());
       },
       child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(

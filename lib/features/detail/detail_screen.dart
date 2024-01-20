@@ -22,15 +22,23 @@ class DetailScreen extends StatelessWidget {
         title: BlocBuilder<DetailBloc, DetailState>(
           builder: (context, state) {
             if (state is LoadedDetailState) {
-              return AppBarText(text: state.anime.title);
+              return AppBarText(
+                text: state.anime.title,
+                color: Colors.white,
+              );
             }
 
             if (state is ErrorDetailState) {
-              return const AppBarText(text: 'Error');
+              return const AppBarText(
+                text: 'Error',
+                color: Colors.white,
+              );
             }
 
             if (state is LoadingDetailState) {
-              return const AppBarText(text: 'Anime Detail');
+              return const AppBarText(
+                text: 'Anime Detail',
+              );
             }
 
             return const SizedBox();

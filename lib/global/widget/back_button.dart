@@ -12,7 +12,7 @@ class AppBackButton extends StatelessWidget {
       onPressed: () => context.pop(),
       icon: Icon(
         Icons.arrow_back_ios,
-        color: color ?? Colors.black,
+        color: color ?? Theme.of(context).iconTheme.color,
         size: 20,
       ),
     );

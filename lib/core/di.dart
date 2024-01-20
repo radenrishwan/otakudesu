@@ -6,6 +6,7 @@ import 'package:myapp/features/episode/episode_service.dart';
 import 'package:myapp/features/genre/genre_service.dart';
 import 'package:myapp/features/genre_list/genre_list_service.dart';
 import 'package:myapp/features/homepage/homepage_service.dart';
+import 'package:myapp/features/search/search_service.dart';
 
 final di = GetIt.instance;
 
@@ -18,4 +19,5 @@ void initDi() {
   di.registerSingleton(GenreListService());
   di.registerSingleton(GenreService());
   di.registerSingleton(CompleteService());
+  di.registerSingleton(SearchService());
 }

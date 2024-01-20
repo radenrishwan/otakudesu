@@ -1,13 +1,12 @@
-import 'package:animated_search_bar/animated_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/core/logger.dart';
 import 'package:myapp/features/complete_ongoing/bloc/complete_bloc.dart';
 import 'package:myapp/features/complete_ongoing/widget/body_widget.dart';
-import 'package:myapp/global/const.dart';
 import 'package:myapp/global/widget/back_button.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
+import 'package:myapp/global/widget/search_bar.dart';
 
 class CompleteScreen extends StatelessWidget {
   const CompleteScreen({super.key});
@@ -18,13 +17,11 @@ class CompleteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: AnimatedSearchBar(
+          title: AppSearchBar(
             label:
                 context.read<CompleteBloc>().status == CompleteStatus.complete
                     ? 'Anime Complete'
                     : 'Anime Ongoing',
-            labelAlignment: Alignment.center,
-            labelStyle: kTitleStyle.copyWith(color: Colors.black),
             onChanged: (value) {
               context.read<CompleteBloc>().add(CompleteEvent.search(value));
             },

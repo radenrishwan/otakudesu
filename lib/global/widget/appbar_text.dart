@@ -3,12 +3,12 @@ import 'package:myapp/global/const.dart';
 
 class AppBarText extends StatelessWidget {
   final String text;
-  final TextStyle? style;
+  final Color? color;
 
   const AppBarText({
     super.key,
     required this.text,
-    this.style,
+    this.color,
   });
 
   @override
@@ -17,7 +17,9 @@ class AppBarText extends StatelessWidget {
       text,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style: style ?? kTitleStyle.copyWith(color: Colors.white),
+      style: kTitleStyle.copyWith(
+        color: color ?? Theme.of(context).iconTheme.color,
+      ),
     );
   }
 }

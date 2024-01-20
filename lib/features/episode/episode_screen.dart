@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/features/episode/bloc/episode_bloc.dart';
 import 'package:myapp/features/episode/widget/body_widget.dart';
-import 'package:myapp/global/const.dart';
 import 'package:myapp/global/widget/appbar_text.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
@@ -21,27 +20,18 @@ class EpisodeScreen extends StatelessWidget {
             if (state is LoadedEpisodeState) {
               return AppBarText(
                 text: state.episode.title,
-                style: kTitleStyle.copyWith(
-                  color: Colors.black,
-                ),
               );
             }
 
             if (state is ErrorEpisodeState) {
-              return AppBarText(
+              return const AppBarText(
                 text: 'Error',
-                style: kTitleStyle.copyWith(
-                  color: Colors.black,
-                ),
               );
             }
 
             if (state is LoadingEpisodeState) {
-              return AppBarText(
+              return const AppBarText(
                 text: 'Episode',
-                style: kTitleStyle.copyWith(
-                  color: Colors.black,
-                ),
               );
             }
 

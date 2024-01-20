@@ -1,4 +1,3 @@
-import 'package:animated_search_bar/animated_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +7,7 @@ import 'package:myapp/global/const.dart';
 import 'package:myapp/global/widget/back_button.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
+import 'package:myapp/global/widget/search_bar.dart';
 
 class AnimeListScreen extends StatelessWidget {
   const AnimeListScreen({super.key});
@@ -16,10 +16,8 @@ class AnimeListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: AnimatedSearchBar(
+        title: AppSearchBar(
           label: 'Anime List',
-          labelAlignment: Alignment.center,
-          labelStyle: kTitleStyle.copyWith(color: Colors.black),
           onChanged: (value) {
             context.read<AnimeListBloc>().add(AnimeListEvent.search(value));
           },
@@ -45,6 +43,7 @@ class AnimeListScreen extends StatelessWidget {
                 context.read<AnimeListBloc>().add(const AnimeListEvent.load());
               },
               child: ListView.separated(
+                physics: const AlwaysScrollableScrollPhysics(),
                 padding: const EdgeInsets.all(8),
                 itemCount: state.data.length,
                 separatorBuilder: (context, index) {

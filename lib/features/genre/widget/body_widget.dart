@@ -27,6 +27,7 @@ class BodyWidget extends StatelessWidget {
 
     return ListView.separated(
       controller: scrollController,
+      physics: const AlwaysScrollableScrollPhysics(),
       padding: const EdgeInsets.all(8),
       itemCount: data.length,
       separatorBuilder: (context, index) {
