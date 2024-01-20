@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/logger.dart';
 import 'package:myapp/core/router.dart';
 import 'package:myapp/features/bookmark/bookmark_screen.dart';
 import 'package:myapp/features/history/history_screen.dart';
@@ -32,17 +31,24 @@ class RootScreen extends StatelessWidget {
 
     final bottomNavigationItem = [
       CustomBottomNavigationBarItem(
-        item: const BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+        item: const BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
         label: HomePageInitial.routeName,
       ),
       CustomBottomNavigationBarItem(
         item: const BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark), label: ''),
+          icon: Icon(Icons.bookmark),
+          label: 'Bookmark',
+        ),
         label: BookmarkScreen.routeName,
       ),
       CustomBottomNavigationBarItem(
-        item:
-            const BottomNavigationBarItem(icon: Icon(Icons.history), label: ''),
+        item: const BottomNavigationBarItem(
+          icon: Icon(Icons.history),
+          label: 'History',
+        ),
         label: HistoryScreen.routeName,
       ),
     ];
@@ -50,8 +56,6 @@ class RootScreen extends StatelessWidget {
     void onTabTapped(int index) {
       currentIndex.value = index;
       final location = bottomNavigationItem[index];
-
-      logger.d('current label: ${location.label}');
 
       router.go(location.label);
     }

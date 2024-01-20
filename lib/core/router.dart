@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/core/logger.dart';
-import 'package:myapp/features/anime_list/anime_list_screen.dart';
+import 'package:myapp/features/anime_list/anime_list_initial.dart';
 import 'package:myapp/features/bookmark/bookmark_screen.dart';
 import 'package:myapp/features/detail/detail_initial.dart';
 import 'package:myapp/features/detail/detail_screen.dart';
 import 'package:myapp/features/episode/episode_initial.dart';
-import 'package:myapp/features/genre_list/genre_screen.dart';
+import 'package:myapp/features/genre_list/genre_list_screen.dart';
 import 'package:myapp/features/history/history_screen.dart';
 import 'package:myapp/features/homepage/homepage_initial.dart';
 import 'package:myapp/features/root_screen.dart';
@@ -28,9 +28,9 @@ final router = GoRouter(
     ...homeRouter,
     ...detailRouter,
     GoRoute(
-      path: AnimeListScreen.routeName,
+      path: AnimeListInitial.routeName,
       builder: (context, state) {
-        return const AnimeListScreen();
+        return const AnimeListInitial();
       },
     ),
     GoRoute(

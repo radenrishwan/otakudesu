@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:myapp/features/anime_list/anime_list_screen.dart';
-import 'package:myapp/features/genre_list/genre_screen.dart';
+import 'package:myapp/features/anime_list/anime_list_initial.dart';
+import 'package:myapp/features/genre_list/genre_list_screen.dart';
 import 'package:myapp/features/homepage/bloc/homepage_bloc.dart';
 import 'package:myapp/features/homepage/widget/body_widget.dart';
 import 'package:myapp/features/homepage/widget/option_chip.dart';
@@ -17,7 +17,7 @@ class HomePageScreen extends StatelessWidget {
     final chipItem = [
       OptionChip(
         text: 'Anime List',
-        onPressed: () => context.push(AnimeListScreen.routeName),
+        onPressed: () => context.push(AnimeListInitial.routeName),
       ),
       OptionChip(
         text: 'Genre',
