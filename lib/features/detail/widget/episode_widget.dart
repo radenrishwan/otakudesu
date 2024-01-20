@@ -6,12 +6,14 @@ import 'package:myapp/global/const.dart';
 
 class EpisodeWidget extends StatelessWidget {
   final String title;
+  final String thumbnail;
   final List<Episode> episodes;
 
   const EpisodeWidget({
     super.key,
     required this.episodes,
     required this.title,
+    required this.thumbnail,
   });
 
   @override
@@ -33,10 +35,16 @@ class EpisodeWidget extends StatelessWidget {
                 return;
               }
 
+              String input = episode.episode;
+              RegExp regExp = RegExp(r'Episode \d+');
+              String episodeStr = regExp.stringMatch(input) ?? '';
+
               context.pushNamed(EpisodeInitial.routeName, pathParameters: {
                 'id': episode.id.toString(),
               }, queryParameters: {
                 'title': title,
+                'episode': episodeStr,
+                'thumbnail': thumbnail,
               });
             },
             contentPadding: EdgeInsets.zero,

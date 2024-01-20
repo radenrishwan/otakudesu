@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/features/bookmark/widget/list_anime_widget.dart';
-import 'package:myapp/global/data/model/anime.dart';
+import 'package:myapp/global/data/domain/bookmark.dart';
+import 'package:myapp/global/widget/empty_widget.dart';
 
 class BookmarkScreen extends StatelessWidget {
   static const routeName = '/bookmark';
@@ -13,13 +15,19 @@ class BookmarkScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Bookmark'),
       ),
-      body: ListAnimeWidget(
-        datas: List.generate(
-          animeDummyData.length,
-          (index) {
-            return Anime.fromJson(animeDummyData[index]);
-          },
-        ),
+      body: ValueListenableBuilder(
+        valueListenable: Hive.box<Bookmark>(Bookmark.boxName).listenable(),
+        builder: (context, value, _) {
+          if (value.isEmpty) {
+            return const EmptyWidget(
+              message: 'You didn\'t bookmark any anime yet,',
+            );
+          }
+
+          return ListAnimeWidget(
+            datas: value.values.toList(),
+          );
+        },
       ),
     );
   }

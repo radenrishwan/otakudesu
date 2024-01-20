@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/features/detail/bloc/detail_bloc.dart';
 import 'package:myapp/features/detail/widget/body_widget.dart';
+import 'package:myapp/features/detail/widget/bookmark_widget.dart';
 import 'package:myapp/global/widget/appbar_text.dart';
 import 'package:myapp/global/widget/back_button.dart';
 import 'package:myapp/global/widget/error_widget.dart';
@@ -49,6 +50,9 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         shadowColor: Colors.transparent,
+        actions: [
+          BookmarkWidget(BlocProvider.of<DetailBloc>(context)),
+        ],
       ),
       extendBodyBehindAppBar: true,
       body: BlocBuilder<DetailBloc, DetailState>(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/global/data/model/anime.dart';
-import 'package:myapp/global/widget/anime_list_tile.dart';
+import 'package:myapp/features/history/widget/history_list_tile.dart';
+import 'package:myapp/global/data/domain/history.dart';
 
 class ListAnimeWidget extends StatelessWidget {
-  final List<Anime> datas;
+  final List<History> datas;
 
   const ListAnimeWidget({super.key, required this.datas});
 
@@ -14,7 +14,7 @@ class ListAnimeWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final anime = datas[index];
 
-        return AnimeListTitle(
+        return HistoryListTitle(
           anime: anime,
         );
       },

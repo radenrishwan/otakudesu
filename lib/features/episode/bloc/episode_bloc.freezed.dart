@@ -20,32 +20,38 @@ mixin _$EpisodeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) load,
+    required TResult Function(String id, History history) saveHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? load,
+    TResult? Function(String id, History history)? saveHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? load,
+    TResult Function(String id, History history)? saveHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
+    required TResult Function(_SaveHistoryEvent value) saveHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
+    TResult? Function(_SaveHistoryEvent value)? saveHistory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
+    TResult Function(_SaveHistoryEvent value)? saveHistory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) load,
+    required TResult Function(String id, History history) saveHistory,
   }) {
     return load(id);
   }
@@ -163,6 +170,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? load,
+    TResult? Function(String id, History history)? saveHistory,
   }) {
     return load?.call(id);
   }
@@ -171,6 +179,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? load,
+    TResult Function(String id, History history)? saveHistory,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -183,6 +192,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
+    required TResult Function(_SaveHistoryEvent value) saveHistory,
   }) {
     return load(this);
   }
@@ -191,6 +201,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
+    TResult? Function(_SaveHistoryEvent value)? saveHistory,
   }) {
     return load?.call(this);
   }
@@ -199,6 +210,7 @@ class _$LoadEventImpl implements _LoadEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
+    TResult Function(_SaveHistoryEvent value)? saveHistory,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -216,6 +228,155 @@ abstract class _LoadEvent implements EpisodeEvent {
   @override
   @JsonKey(ignore: true)
   _$$LoadEventImplCopyWith<_$LoadEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SaveHistoryEventImplCopyWith<$Res>
+    implements $EpisodeEventCopyWith<$Res> {
+  factory _$$SaveHistoryEventImplCopyWith(_$SaveHistoryEventImpl value,
+          $Res Function(_$SaveHistoryEventImpl) then) =
+      __$$SaveHistoryEventImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id, History history});
+}
+
+/// @nodoc
+class __$$SaveHistoryEventImplCopyWithImpl<$Res>
+    extends _$EpisodeEventCopyWithImpl<$Res, _$SaveHistoryEventImpl>
+    implements _$$SaveHistoryEventImplCopyWith<$Res> {
+  __$$SaveHistoryEventImplCopyWithImpl(_$SaveHistoryEventImpl _value,
+      $Res Function(_$SaveHistoryEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? history = freezed,
+  }) {
+    return _then(_$SaveHistoryEventImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      freezed == history
+          ? _value.history
+          : history // ignore: cast_nullable_to_non_nullable
+              as History,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SaveHistoryEventImpl implements _SaveHistoryEvent {
+  const _$SaveHistoryEventImpl(this.id, this.history);
+
+  @override
+  final String id;
+  @override
+  final History history;
+
+  @override
+  String toString() {
+    return 'EpisodeEvent.saveHistory(id: $id, history: $history)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SaveHistoryEventImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other.history, history));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, const DeepCollectionEquality().hash(history));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveHistoryEventImplCopyWith<_$SaveHistoryEventImpl> get copyWith =>
+      __$$SaveHistoryEventImplCopyWithImpl<_$SaveHistoryEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) load,
+    required TResult Function(String id, History history) saveHistory,
+  }) {
+    return saveHistory(id, history);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? load,
+    TResult? Function(String id, History history)? saveHistory,
+  }) {
+    return saveHistory?.call(id, history);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? load,
+    TResult Function(String id, History history)? saveHistory,
+    required TResult orElse(),
+  }) {
+    if (saveHistory != null) {
+      return saveHistory(id, history);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadEvent value) load,
+    required TResult Function(_SaveHistoryEvent value) saveHistory,
+  }) {
+    return saveHistory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadEvent value)? load,
+    TResult? Function(_SaveHistoryEvent value)? saveHistory,
+  }) {
+    return saveHistory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadEvent value)? load,
+    TResult Function(_SaveHistoryEvent value)? saveHistory,
+    required TResult orElse(),
+  }) {
+    if (saveHistory != null) {
+      return saveHistory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveHistoryEvent implements EpisodeEvent {
+  const factory _SaveHistoryEvent(final String id, final History history) =
+      _$SaveHistoryEventImpl;
+
+  @override
+  String get id;
+  History get history;
+  @override
+  @JsonKey(ignore: true)
+  _$$SaveHistoryEventImplCopyWith<_$SaveHistoryEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

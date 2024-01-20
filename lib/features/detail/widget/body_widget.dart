@@ -180,6 +180,7 @@ class BodyWidget extends StatelessWidget {
                   EpisodeWidget(
                     episodes: anime.episode,
                     title: anime.title,
+                    thumbnail: anime.thumbnail,
                   ),
                 ],
               ),

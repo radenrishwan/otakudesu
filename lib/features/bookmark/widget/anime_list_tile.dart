@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/global/const.dart';
-import 'package:myapp/global/data/model/anime.dart';
+import 'package:myapp/global/data/domain/bookmark.dart';
 import 'package:myapp/global/widget/image_widget.dart';
 
-class AnimeListTitle extends StatelessWidget {
-  final Anime anime;
+class BookmarkListTitle extends StatelessWidget {
+  final Bookmark anime;
   final VoidCallback? onPressed;
   final Widget? trailing;
-  const AnimeListTitle({
+  const BookmarkListTitle({
     super.key,
     required this.anime,
     this.onPressed,
@@ -16,7 +16,7 @@ class AnimeListTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final date = DateTime.now();
+    final date = anime.createdAt;
     final dateStr = '${date.day}/${date.month}/${date.year}';
 
     return ListTile(
@@ -48,7 +48,7 @@ class AnimeListTitle extends StatelessWidget {
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(anime.episode.trimLeft().trimLeft()),
+          Text("${anime.episode} Episode"),
           Text(
             dateStr,
             style: kTypographySubtitleStyle,

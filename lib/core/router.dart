@@ -14,6 +14,7 @@ import 'package:myapp/features/history/history_screen.dart';
 import 'package:myapp/features/homepage/homepage_initial.dart';
 import 'package:myapp/features/root_screen.dart';
 import 'package:myapp/features/search/search_initial.dart';
+import 'package:myapp/global/data/domain/history.dart';
 
 // navigator
 final _rootNavigator = GlobalKey<NavigatorState>();
@@ -119,7 +120,21 @@ final detailRouter = [
     builder: (context, state) {
       final id = state.pathParameters['id']!;
 
-      return EpisodeInitial(id: id);
+      final title = state.uri.queryParameters['title'] ?? '';
+      final thumbnail = state.uri.queryParameters['thumbnail'] ?? '';
+      final episode = state.uri.queryParameters['episode'] ?? '';
+      final watchedAt = DateTime.now();
+
+      return EpisodeInitial(
+        id: id,
+        history: History(
+          title: title,
+          episodeId: id,
+          thumbnail: thumbnail,
+          episode: episode,
+          watchedAt: watchedAt,
+        ),
+      );
     },
   ),
 ];

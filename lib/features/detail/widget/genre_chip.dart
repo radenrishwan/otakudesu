@@ -10,7 +10,7 @@ class GenreChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withOpacity(0.4),
+        color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(

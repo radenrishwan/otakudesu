@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:myapp/features/bookmark/widget/anime_list_tile.dart';
+import 'package:myapp/features/detail/detail_screen.dart';
 import 'package:myapp/global/const.dart';
-import 'package:myapp/global/data/model/anime.dart';
-import 'package:myapp/global/widget/anime_list_tile.dart';
-
-enum BookmarkType {
-  watchLater,
-  watched,
-  done,
-}
+import 'package:myapp/global/data/domain/bookmark.dart';
 
 class ListAnimeWidget extends StatelessWidget {
-  final List<Anime> datas;
+  final List<Bookmark> datas;
 
   const ListAnimeWidget({super.key, required this.datas});
 
@@ -21,20 +17,23 @@ class ListAnimeWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final anime = datas[index];
 
-        return AnimeListTitle(
+        return BookmarkListTitle(
           anime: anime,
           trailing: _buildTrailing(
             context,
-            anime,
-            type: BookmarkType.values[index % 3],
+            type: anime.type,
           ),
+          onPressed: () {
+            context.pushNamed(DetailScreen.routeName, pathParameters: {
+              'id': anime.animeId,
+            });
+          },
         );
       },
     );
   }
 
-  Widget _buildTrailing(BuildContext context, Anime anime,
-      {required BookmarkType type}) {
+  Widget _buildTrailing(BuildContext context, {required BookmarkType type}) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 8,
@@ -52,8 +51,8 @@ class ListAnimeWidget extends StatelessWidget {
     switch (type) {
       case BookmarkType.watchLater:
         return Colors.orange;
-      case BookmarkType.watched:
-        return Colors.green;
+      case BookmarkType.ongoing:
+        return Colors.blue;
       case BookmarkType.done:
         return Theme.of(context).colorScheme.primary;
     }
@@ -64,17 +63,17 @@ class ListAnimeWidget extends StatelessWidget {
       case BookmarkType.watchLater:
         return Text(
           'Watch Later',
-          style: kTypographySubtitleStyle.copyWith(color: Colors.black),
+          style: kTypographySubtitleStyle.copyWith(color: Colors.white),
         );
-      case BookmarkType.watched:
+      case BookmarkType.ongoing:
         return Text(
-          'Watched',
-          style: kTypographySubtitleStyle.copyWith(color: Colors.black),
+          'Ongoing',
+          style: kTypographySubtitleStyle.copyWith(color: Colors.white),
         );
       case BookmarkType.done:
         return Text(
           'Done',
-          style: kTypographySubtitleStyle.copyWith(color: Colors.black),
+          style: kTypographySubtitleStyle.copyWith(color: Colors.white),
         );
     }
   }
