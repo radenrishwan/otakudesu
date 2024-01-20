@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:myapp/features/anime_list/anime_list_service.dart';
+import 'package:myapp/features/complete_ongoing/complete_service.dart';
 import 'package:myapp/features/detail/detail_service.dart';
 import 'package:myapp/features/episode/episode_service.dart';
 import 'package:myapp/features/genre/genre_service.dart';
@@ -16,4 +17,5 @@ void initDi() {
   di.registerSingleton(AnimeListService());
   di.registerSingleton(GenreListService());
   di.registerSingleton(GenreService());
+  di.registerSingleton(CompleteService());
 }

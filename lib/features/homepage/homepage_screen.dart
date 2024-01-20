@@ -1,11 +1,14 @@
+import 'package:animated_search_bar/animated_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/features/anime_list/anime_list_initial.dart';
+import 'package:myapp/features/complete_ongoing/complete_initial.dart';
 import 'package:myapp/features/genre_list/genre_list_screen.dart';
 import 'package:myapp/features/homepage/bloc/homepage_bloc.dart';
 import 'package:myapp/features/homepage/widget/body_widget.dart';
 import 'package:myapp/features/homepage/widget/option_chip.dart';
+import 'package:myapp/global/const.dart';
 import 'package:myapp/global/widget/error_widget.dart';
 import 'package:myapp/global/widget/loading_widget.dart';
 
@@ -23,17 +26,31 @@ class HomePageScreen extends StatelessWidget {
         text: 'Genre',
         onPressed: () => context.push(GenreListScreen.routeName),
       ),
-      const OptionChip(text: 'Complete'),
-      const OptionChip(text: 'Ongoing'),
+      OptionChip(
+        text: 'Complete',
+        onPressed: () =>
+            context.pushNamed(CompleteInitial.routeName, queryParameters: {
+          'status': 'complete',
+        }),
+      ),
+      OptionChip(
+        text: 'Ongoing',
+        onPressed: () =>
+            context.pushNamed(CompleteInitial.routeName, queryParameters: {
+          'status': 'ongoing',
+        }),
+      ),
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: const TextField(
-          decoration: InputDecoration(
-            hintText: 'Search',
-            suffixIcon: Icon(Icons.search),
-          ),
+        title: AnimatedSearchBar(
+          label: 'Otakudesu',
+          labelAlignment: Alignment.center,
+          labelStyle: kTitleStyle.copyWith(color: Colors.black),
+          onFieldSubmitted: (value) {
+            // move into search page
+          },
         ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(40),

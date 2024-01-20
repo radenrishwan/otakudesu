@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:myapp/core/logger.dart';
 import 'package:myapp/features/anime_list/anime_list_initial.dart';
 import 'package:myapp/features/bookmark/bookmark_screen.dart';
+import 'package:myapp/features/complete_ongoing/bloc/complete_bloc.dart';
+import 'package:myapp/features/complete_ongoing/complete_initial.dart';
 import 'package:myapp/features/detail/detail_initial.dart';
 import 'package:myapp/features/detail/detail_screen.dart';
 import 'package:myapp/features/episode/episode_initial.dart';
@@ -33,6 +35,18 @@ final router = GoRouter(
       path: AnimeListInitial.routeName,
       builder: (context, state) {
         return const AnimeListInitial();
+      },
+    ),
+    GoRoute(
+      path: CompleteInitial.routeName,
+      name: CompleteInitial.routeName,
+      builder: (context, state) {
+        final status = state.uri.queryParameters['status'] ?? 'complete';
+        if (status == 'complete') {
+          return const CompleteInitial(status: CompleteStatus.complete);
+        } else {
+          return const CompleteInitial(status: CompleteStatus.ongoing);
+        }
       },
     ),
   ],

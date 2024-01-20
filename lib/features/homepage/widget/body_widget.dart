@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:myapp/features/complete_ongoing/complete_initial.dart';
 import 'package:myapp/features/homepage/bloc/homepage_bloc.dart';
 import 'package:myapp/features/homepage/homepage_model.dart';
 import 'package:myapp/features/homepage/widget/complete_anime_widget.dart';
 import 'package:myapp/features/homepage/widget/header_widget.dart';
 import 'package:myapp/features/homepage/widget/ongoing_widget.dart';
+import 'package:myapp/global/const.dart';
 
 class BodyWidget extends StatelessWidget {
   final AnimeHomepage data;
@@ -38,19 +41,38 @@ class BodyWidget extends StatelessWidget {
               //   datas: data.ongoing,
               // ),
               const SizedBox(height: 18),
-              const HeaderWidget(title: 'On-going'),
+              HeaderWidget(
+                onPressed: () {
+                  context
+                      .pushNamed(CompleteInitial.routeName, queryParameters: {
+                    'status': 'ongoing',
+                  });
+                },
+                title: 'Ongoing',
+                icon: Text(
+                  'See All',
+                  style: kTypographySubtitleStyle.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ),
               const SizedBox(height: 18),
               OngoingWidget(
                 datas: data.ongoing,
               ),
               const SizedBox(height: 18),
-              const HeaderWidget(
-                title: 'Complete Anime',
+              HeaderWidget(
+                onPressed: () {
+                  context
+                      .pushNamed(CompleteInitial.routeName, queryParameters: {
+                    'status': 'complete',
+                  });
+                },
+                title: 'Complete',
                 icon: Text(
                   'See All',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
+                  style: kTypographySubtitleStyle.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ),
