@@ -39,16 +39,22 @@ class ImageWidget extends StatelessWidget {
         );
       },
       errorWidget: (context, url, error) {
-        return const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.error),
-            SizedBox(height: 8),
-            Text(
-              'Image load failed',
-              textAlign: TextAlign.center,
-            ),
-          ],
+        return SizedBox(
+          height: height,
+          width: width,
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(Icons.error, color: Colors.red),
+              Text(
+                'Image load failed',
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         );
       },
     );
