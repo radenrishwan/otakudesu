@@ -25,7 +25,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       } catch (e) {
         logger.e(e.toString());
 
-        emit(const SearchState.error("Cannt load search result"));
+        emit(const SearchState.error("Cannot load search result"));
       }
     });
 
