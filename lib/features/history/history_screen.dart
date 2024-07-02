@@ -22,7 +22,31 @@ class HistoryScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              box.clear();
+              // show dialog to confirm delete all history
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text('Delete all history?'),
+                    content: const Text('This action cannot be undone.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          box.clear();
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Delete'),
+                      ),
+                    ],
+                  );
+                },
+              );
             },
             icon: Icon(
               Icons.delete,
@@ -41,8 +65,12 @@ class HistoryScreen extends StatelessWidget {
             );
           }
 
+          final data = value.values.toList();
+
+          // sort by last watched
+          data.sort((a, b) => b.watchedAt.compareTo(a.watchedAt));
           return ListAnimeWidget(
-            datas: value.values.toList(),
+            datas: data,
           );
         },
       ),

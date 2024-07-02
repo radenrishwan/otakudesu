@@ -18,8 +18,9 @@ class HistoryListTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final date = DateTime.now();
-    final dateStr = '${date.day}/${date.month}/${date.year}';
+    final date = anime.watchedAt;
+    final dateStr =
+        '${date.day}/${date.month}/${date.year} ${date.hour}:${date.minute}:${date.second}';
     final box = Hive.box<History>(History.boxName);
 
     return Slidable(

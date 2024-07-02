@@ -19,7 +19,8 @@ class BookmarkListTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final date = anime.createdAt;
-    final dateStr = '${date.day}/${date.month}/${date.year}';
+    final dateStr =
+        '${date.day}/${date.month}/${date.year} ${date.hour}:${date.minute}:${date.second}';
     final box = Hive.box<Bookmark>(Bookmark.boxName);
 
     return Slidable(
