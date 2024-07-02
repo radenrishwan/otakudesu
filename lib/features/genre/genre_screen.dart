@@ -20,15 +20,7 @@ class GenreScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          title: AppSearchBar(
-            label: title,
-            onChanged: (value) {
-              context.read<GenreBloc>().add(GenreEvent.search(value));
-            },
-            onFieldSubmitted: (value) {
-              context.read<GenreBloc>().add(GenreEvent.search(value));
-            },
-          ),
+          title: Text(title),
           leading: const AppBackButton(),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(5),

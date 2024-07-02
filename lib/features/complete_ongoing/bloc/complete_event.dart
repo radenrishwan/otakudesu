@@ -5,4 +5,5 @@ class CompleteEvent with _$CompleteEvent {
   const factory CompleteEvent.load() = _LoadEvent;
   const factory CompleteEvent.loadMore() = _LoadMoreEvent;
   const factory CompleteEvent.search(String query) = _SearchEvent;
+  const factory CompleteEvent.toggleView() = _ToggleViewEvent;
 }

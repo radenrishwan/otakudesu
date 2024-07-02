@@ -19,7 +19,7 @@ class GenreListScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const AppBarText(text: 'Genre List'),
+        title: const AppBarText(text: "Genre"),
         centerTitle: true,
       ),
       body: FutureBuilder(

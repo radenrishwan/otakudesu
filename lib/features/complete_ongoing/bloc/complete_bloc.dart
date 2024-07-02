@@ -89,5 +89,18 @@ class CompleteBloc extends Bloc<CompleteEvent, CompleteState> {
         }
       }
     });
+
+    on<_ToggleViewEvent>((event, emit) async {
+      final state = this.state;
+      if (state is LoadedCompleteState) {
+        emit(
+          state.copyWith(
+            view: state.view == CompleteView.list
+                ? CompleteView.grid
+                : CompleteView.list,
+          ),
+        );
+      }
+    });
   }
 }

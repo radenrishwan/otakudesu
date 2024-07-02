@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/features/bookmark/widget/list_anime_widget.dart';
 import 'package:myapp/global/data/domain/bookmark.dart';
+import 'package:myapp/global/widget/appbar_text.dart';
 import 'package:myapp/global/widget/empty_widget.dart';
 
 class BookmarkScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class BookmarkScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bookmark'),
+        title: const AppBarText(text: 'Bookmark'),
       ),
       body: ValueListenableBuilder(
         valueListenable: Hive.box<Bookmark>(Bookmark.boxName).listenable(),

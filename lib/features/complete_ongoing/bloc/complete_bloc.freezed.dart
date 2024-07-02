@@ -21,6 +21,7 @@ mixin _$CompleteEvent {
     required TResult Function() load,
     required TResult Function() loadMore,
     required TResult Function(String query) search,
+    required TResult Function() toggleView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$CompleteEvent {
     TResult? Function()? load,
     TResult? Function()? loadMore,
     TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$CompleteEvent {
     TResult Function()? load,
     TResult Function()? loadMore,
     TResult Function(String query)? search,
+    TResult Function()? toggleView,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$CompleteEvent {
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
     required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$CompleteEvent {
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
     TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$CompleteEvent {
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
     TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$LoadEventImpl implements _LoadEvent {
     required TResult Function() load,
     required TResult Function() loadMore,
     required TResult Function(String query) search,
+    required TResult Function() toggleView,
   }) {
     return load();
   }
@@ -131,6 +138,7 @@ class _$LoadEventImpl implements _LoadEvent {
     TResult? Function()? load,
     TResult? Function()? loadMore,
     TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
   }) {
     return load?.call();
   }
@@ -141,6 +149,7 @@ class _$LoadEventImpl implements _LoadEvent {
     TResult Function()? load,
     TResult Function()? loadMore,
     TResult Function(String query)? search,
+    TResult Function()? toggleView,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -155,6 +164,7 @@ class _$LoadEventImpl implements _LoadEvent {
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
     required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
     return load(this);
   }
@@ -165,6 +175,7 @@ class _$LoadEventImpl implements _LoadEvent {
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
     TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
     return load?.call(this);
   }
@@ -175,6 +186,7 @@ class _$LoadEventImpl implements _LoadEvent {
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
     TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -229,6 +241,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
     required TResult Function() load,
     required TResult Function() loadMore,
     required TResult Function(String query) search,
+    required TResult Function() toggleView,
   }) {
     return loadMore();
   }
@@ -239,6 +252,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
     TResult? Function()? load,
     TResult? Function()? loadMore,
     TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
   }) {
     return loadMore?.call();
   }
@@ -249,6 +263,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
     TResult Function()? load,
     TResult Function()? loadMore,
     TResult Function(String query)? search,
+    TResult Function()? toggleView,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -263,6 +278,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
     required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
     return loadMore(this);
   }
@@ -273,6 +289,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
     TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
     return loadMore?.call(this);
   }
@@ -283,6 +300,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
     TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -363,6 +381,7 @@ class _$SearchEventImpl implements _SearchEvent {
     required TResult Function() load,
     required TResult Function() loadMore,
     required TResult Function(String query) search,
+    required TResult Function() toggleView,
   }) {
     return search(query);
   }
@@ -373,6 +392,7 @@ class _$SearchEventImpl implements _SearchEvent {
     TResult? Function()? load,
     TResult? Function()? loadMore,
     TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
   }) {
     return search?.call(query);
   }
@@ -383,6 +403,7 @@ class _$SearchEventImpl implements _SearchEvent {
     TResult Function()? load,
     TResult Function()? loadMore,
     TResult Function(String query)? search,
+    TResult Function()? toggleView,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -397,6 +418,7 @@ class _$SearchEventImpl implements _SearchEvent {
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
     required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
     return search(this);
   }
@@ -407,6 +429,7 @@ class _$SearchEventImpl implements _SearchEvent {
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
     TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
     return search?.call(this);
   }
@@ -417,6 +440,7 @@ class _$SearchEventImpl implements _SearchEvent {
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
     TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -436,37 +460,151 @@ abstract class _SearchEvent implements CompleteEvent {
 }
 
 /// @nodoc
+abstract class _$$ToggleViewEventImplCopyWith<$Res> {
+  factory _$$ToggleViewEventImplCopyWith(_$ToggleViewEventImpl value,
+          $Res Function(_$ToggleViewEventImpl) then) =
+      __$$ToggleViewEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ToggleViewEventImplCopyWithImpl<$Res>
+    extends _$CompleteEventCopyWithImpl<$Res, _$ToggleViewEventImpl>
+    implements _$$ToggleViewEventImplCopyWith<$Res> {
+  __$$ToggleViewEventImplCopyWithImpl(
+      _$ToggleViewEventImpl _value, $Res Function(_$ToggleViewEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ToggleViewEventImpl implements _ToggleViewEvent {
+  const _$ToggleViewEventImpl();
+
+  @override
+  String toString() {
+    return 'CompleteEvent.toggleView()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ToggleViewEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function() loadMore,
+    required TResult Function(String query) search,
+    required TResult Function() toggleView,
+  }) {
+    return toggleView();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function()? loadMore,
+    TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
+  }) {
+    return toggleView?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function()? loadMore,
+    TResult Function(String query)? search,
+    TResult Function()? toggleView,
+    required TResult orElse(),
+  }) {
+    if (toggleView != null) {
+      return toggleView();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadEvent value) load,
+    required TResult Function(_LoadMoreEvent value) loadMore,
+    required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
+  }) {
+    return toggleView(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadEvent value)? load,
+    TResult? Function(_LoadMoreEvent value)? loadMore,
+    TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
+  }) {
+    return toggleView?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadEvent value)? load,
+    TResult Function(_LoadMoreEvent value)? loadMore,
+    TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
+    required TResult orElse(),
+  }) {
+    if (toggleView != null) {
+      return toggleView(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleViewEvent implements CompleteEvent {
+  const factory _ToggleViewEvent() = _$ToggleViewEventImpl;
+}
+
+/// @nodoc
 mixin _$CompleteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)
+    required TResult Function(String message, List<Anime> data,
+            List<Anime> searchData, int page, CompleteView view)
         loaded,
-    required TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)
+    required TResult Function(String message, List<Anime> data,
+            List<Anime> searchData, int page, CompleteView view)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult? Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         loaded,
-    TResult? Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult? Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         loaded,
-    TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         error,
     required TResult orElse(),
   }) =>
@@ -553,11 +691,11 @@ class _$LoadingCompleteStateImpl implements LoadingCompleteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)
+    required TResult Function(String message, List<Anime> data,
+            List<Anime> searchData, int page, CompleteView view)
         loaded,
-    required TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)
+    required TResult Function(String message, List<Anime> data,
+            List<Anime> searchData, int page, CompleteView view)
         error,
   }) {
     return loading();
@@ -567,11 +705,11 @@ class _$LoadingCompleteStateImpl implements LoadingCompleteState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult? Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         loaded,
-    TResult? Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult? Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         error,
   }) {
     return loading?.call();
@@ -581,11 +719,11 @@ class _$LoadingCompleteStateImpl implements LoadingCompleteState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         loaded,
-    TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         error,
     required TResult orElse(),
   }) {
@@ -641,7 +779,11 @@ abstract class _$$LoadedCompleteStateImplCopyWith<$Res> {
       __$$LoadedCompleteStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String message, List<Anime> data, List<Anime> searchData, int page});
+      {String message,
+      List<Anime> data,
+      List<Anime> searchData,
+      int page,
+      CompleteView view});
 }
 
 /// @nodoc
@@ -659,6 +801,7 @@ class __$$LoadedCompleteStateImplCopyWithImpl<$Res>
     Object? data = null,
     Object? searchData = null,
     Object? page = null,
+    Object? view = null,
   }) {
     return _then(_$LoadedCompleteStateImpl(
       message: null == message
@@ -677,6 +820,10 @@ class __$$LoadedCompleteStateImplCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      view: null == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as CompleteView,
     ));
   }
 }
@@ -688,7 +835,8 @@ class _$LoadedCompleteStateImpl implements LoadedCompleteState {
       {required this.message,
       required final List<Anime> data,
       required final List<Anime> searchData,
-      required this.page})
+      required this.page,
+      this.view = CompleteView.list})
       : _data = data,
         _searchData = searchData;
 
@@ -712,10 +860,13 @@ class _$LoadedCompleteStateImpl implements LoadedCompleteState {
 
   @override
   final int page;
+  @override
+  @JsonKey()
+  final CompleteView view;
 
   @override
   String toString() {
-    return 'CompleteState.loaded(message: $message, data: $data, searchData: $searchData, page: $page)';
+    return 'CompleteState.loaded(message: $message, data: $data, searchData: $searchData, page: $page, view: $view)';
   }
 
   @override
@@ -727,7 +878,8 @@ class _$LoadedCompleteStateImpl implements LoadedCompleteState {
             const DeepCollectionEquality().equals(other._data, _data) &&
             const DeepCollectionEquality()
                 .equals(other._searchData, _searchData) &&
-            (identical(other.page, page) || other.page == page));
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.view, view) || other.view == view));
   }
 
   @override
@@ -736,7 +888,8 @@ class _$LoadedCompleteStateImpl implements LoadedCompleteState {
       message,
       const DeepCollectionEquality().hash(_data),
       const DeepCollectionEquality().hash(_searchData),
-      page);
+      page,
+      view);
 
   @JsonKey(ignore: true)
   @override
@@ -749,44 +902,44 @@ class _$LoadedCompleteStateImpl implements LoadedCompleteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)
+    required TResult Function(String message, List<Anime> data,
+            List<Anime> searchData, int page, CompleteView view)
         loaded,
-    required TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)
+    required TResult Function(String message, List<Anime> data,
+            List<Anime> searchData, int page, CompleteView view)
         error,
   }) {
-    return loaded(message, data, searchData, page);
+    return loaded(message, data, searchData, page, view);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult? Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         loaded,
-    TResult? Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult? Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         error,
   }) {
-    return loaded?.call(message, data, searchData, page);
+    return loaded?.call(message, data, searchData, page, view);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         loaded,
-    TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(message, data, searchData, page);
+      return loaded(message, data, searchData, page, view);
     }
     return orElse();
   }
@@ -831,12 +984,14 @@ abstract class LoadedCompleteState implements CompleteState {
       {required final String message,
       required final List<Anime> data,
       required final List<Anime> searchData,
-      required final int page}) = _$LoadedCompleteStateImpl;
+      required final int page,
+      final CompleteView view}) = _$LoadedCompleteStateImpl;
 
   String get message;
   List<Anime> get data;
   List<Anime> get searchData;
   int get page;
+  CompleteView get view;
   @JsonKey(ignore: true)
   _$$LoadedCompleteStateImplCopyWith<_$LoadedCompleteStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -849,7 +1004,11 @@ abstract class _$$ErrorCompleteStateImplCopyWith<$Res> {
       __$$ErrorCompleteStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String message, List<Anime> data, List<Anime> searchData, int page});
+      {String message,
+      List<Anime> data,
+      List<Anime> searchData,
+      int page,
+      CompleteView view});
 }
 
 /// @nodoc
@@ -867,6 +1026,7 @@ class __$$ErrorCompleteStateImplCopyWithImpl<$Res>
     Object? data = null,
     Object? searchData = null,
     Object? page = null,
+    Object? view = null,
   }) {
     return _then(_$ErrorCompleteStateImpl(
       message: null == message
@@ -885,6 +1045,10 @@ class __$$ErrorCompleteStateImplCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      view: null == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as CompleteView,
     ));
   }
 }
@@ -896,7 +1060,8 @@ class _$ErrorCompleteStateImpl implements ErrorCompleteState {
       {required this.message,
       required final List<Anime> data,
       required final List<Anime> searchData,
-      required this.page})
+      required this.page,
+      this.view = CompleteView.list})
       : _data = data,
         _searchData = searchData;
 
@@ -920,10 +1085,13 @@ class _$ErrorCompleteStateImpl implements ErrorCompleteState {
 
   @override
   final int page;
+  @override
+  @JsonKey()
+  final CompleteView view;
 
   @override
   String toString() {
-    return 'CompleteState.error(message: $message, data: $data, searchData: $searchData, page: $page)';
+    return 'CompleteState.error(message: $message, data: $data, searchData: $searchData, page: $page, view: $view)';
   }
 
   @override
@@ -935,7 +1103,8 @@ class _$ErrorCompleteStateImpl implements ErrorCompleteState {
             const DeepCollectionEquality().equals(other._data, _data) &&
             const DeepCollectionEquality()
                 .equals(other._searchData, _searchData) &&
-            (identical(other.page, page) || other.page == page));
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.view, view) || other.view == view));
   }
 
   @override
@@ -944,7 +1113,8 @@ class _$ErrorCompleteStateImpl implements ErrorCompleteState {
       message,
       const DeepCollectionEquality().hash(_data),
       const DeepCollectionEquality().hash(_searchData),
-      page);
+      page,
+      view);
 
   @JsonKey(ignore: true)
   @override
@@ -957,44 +1127,44 @@ class _$ErrorCompleteStateImpl implements ErrorCompleteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)
+    required TResult Function(String message, List<Anime> data,
+            List<Anime> searchData, int page, CompleteView view)
         loaded,
-    required TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)
+    required TResult Function(String message, List<Anime> data,
+            List<Anime> searchData, int page, CompleteView view)
         error,
   }) {
-    return error(message, data, searchData, page);
+    return error(message, data, searchData, page, view);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult? Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         loaded,
-    TResult? Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult? Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         error,
   }) {
-    return error?.call(message, data, searchData, page);
+    return error?.call(message, data, searchData, page, view);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         loaded,
-    TResult Function(
-            String message, List<Anime> data, List<Anime> searchData, int page)?
+    TResult Function(String message, List<Anime> data, List<Anime> searchData,
+            int page, CompleteView view)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message, data, searchData, page);
+      return error(message, data, searchData, page, view);
     }
     return orElse();
   }
@@ -1039,12 +1209,14 @@ abstract class ErrorCompleteState implements CompleteState {
       {required final String message,
       required final List<Anime> data,
       required final List<Anime> searchData,
-      required final int page}) = _$ErrorCompleteStateImpl;
+      required final int page,
+      final CompleteView view}) = _$ErrorCompleteStateImpl;
 
   String get message;
   List<Anime> get data;
   List<Anime> get searchData;
   int get page;
+  CompleteView get view;
   @JsonKey(ignore: true)
   _$$ErrorCompleteStateImplCopyWith<_$ErrorCompleteStateImpl> get copyWith =>
       throw _privateConstructorUsedError;

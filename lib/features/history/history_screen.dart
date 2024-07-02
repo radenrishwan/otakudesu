@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/features/history/widget/list_anime_widget.dart';
 import 'package:myapp/global/data/domain/history.dart';
+import 'package:myapp/global/widget/appbar_text.dart';
 import 'package:myapp/global/widget/empty_widget.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class HistoryScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('History'),
+        title: const AppBarText(text: 'History'),
         actions: [
           IconButton(
             onPressed: () {
