@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myapp/features/detail/detail_screen.dart';
-import 'package:myapp/features/detail/widget/genre_chip.dart';
 import 'package:myapp/features/genre/bloc/genre_bloc.dart';
 import 'package:myapp/features/genre/genre_model.dart';
-import 'package:myapp/global/const.dart';
-import 'package:myapp/global/widget/image_widget.dart';
+import 'package:myapp/features/genre/widget/grid_card.dart';
+import 'package:myapp/features/genre/widget/list_card.dart';
 
 class BodyWidget extends StatelessWidget {
   final String genre;
   final List<GenreData> data;
+  final GenreView view;
 
-  const BodyWidget({super.key, required this.data, required this.genre});
+  const BodyWidget({
+    super.key,
+    required this.data,
+    required this.genre,
+    required this.view,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,94 +30,50 @@ class BodyWidget extends StatelessWidget {
       }
     });
 
-    return ListView.separated(
-      controller: scrollController,
-      physics: const AlwaysScrollableScrollPhysics(),
-      padding: const EdgeInsets.all(8),
-      itemCount: data.length,
-      separatorBuilder: (context, index) {
-        return const SizedBox(height: 8);
-      },
-      itemBuilder: (context, index) {
-        final anime = data[index];
+    return view == GenreView.list
+        ? ListView.separated(
+            controller: scrollController,
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(8),
+            itemCount: data.length,
+            separatorBuilder: (context, index) {
+              return const SizedBox(height: 8);
+            },
+            itemBuilder: (context, index) {
+              final anime = data[index];
 
-        return InkWell(
-          onTap: () {
-            context.pushNamed(DetailScreen.routeName, pathParameters: {
-              'id': anime.id,
-            });
-          },
-          child: SizedBox(
-            height: 160,
-            width: double.infinity,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: ImageWidget(
-                    url: anime.thumbnail,
-                    width: 100,
-                    height: double.infinity,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        anime.title,
-                        style: kTypographyTitleStyle,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        anime.episode,
-                        style: kTypographySubtitleStyle,
-                      ),
-                      const SizedBox(height: 4),
-                      Expanded(
-                        child: Wrap(
-                          spacing: 4,
-                          runSpacing: 4,
-                          children: anime.genre.map(
-                            (e) {
-                              if (e == '') {
-                                return const SizedBox.shrink();
-                              }
-
-                              return GenreChip(genre: e);
-                            },
-                          ).toList(),
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            size: 16,
-                            color: Colors.yellow,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            anime.score.isEmpty ? '-' : anime.score,
-                            style: kTypographySubtitleStyle,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              return InkWell(
+                onTap: () {
+                  context.pushNamed(DetailScreen.routeName, pathParameters: {
+                    'id': anime.id,
+                  });
+                },
+                child: ListCard(anime: anime),
+              );
+            },
+          )
+        : GridView.count(
+            padding: const EdgeInsets.all(8),
+            controller: scrollController,
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            crossAxisCount: 3,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: 0.50,
+            children: List.generate(
+              data.length,
+              (index) {
+                return GridCard(
+                  anime: data[index],
+                  onPressed: () {
+                    // context.pushNamed(DetailScreen.routeName, pathParameters: {
+                    //   'id': data[index].id.toString(),
+                    // });
+                  },
+                );
+              },
             ),
-          ),
-        );
-      },
-    );
+          );
   }
 }

@@ -20,7 +20,6 @@ mixin _$CompleteEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() loadMore,
-    required TResult Function(String query) search,
     required TResult Function() toggleView,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +27,6 @@ mixin _$CompleteEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? loadMore,
-    TResult? Function(String query)? search,
     TResult? Function()? toggleView,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ mixin _$CompleteEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? loadMore,
-    TResult Function(String query)? search,
     TResult Function()? toggleView,
     required TResult orElse(),
   }) =>
@@ -45,7 +42,6 @@ mixin _$CompleteEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
     required TResult Function(_ToggleViewEvent value) toggleView,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +49,6 @@ mixin _$CompleteEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
     TResult? Function(_ToggleViewEvent value)? toggleView,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +56,6 @@ mixin _$CompleteEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
     TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) =>
@@ -126,7 +120,6 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() loadMore,
-    required TResult Function(String query) search,
     required TResult Function() toggleView,
   }) {
     return load();
@@ -137,7 +130,6 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? loadMore,
-    TResult? Function(String query)? search,
     TResult? Function()? toggleView,
   }) {
     return load?.call();
@@ -148,7 +140,6 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? loadMore,
-    TResult Function(String query)? search,
     TResult Function()? toggleView,
     required TResult orElse(),
   }) {
@@ -163,7 +154,6 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
     required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
     return load(this);
@@ -174,7 +164,6 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
     TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
     return load?.call(this);
@@ -185,7 +174,6 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
     TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {
@@ -240,7 +228,6 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() loadMore,
-    required TResult Function(String query) search,
     required TResult Function() toggleView,
   }) {
     return loadMore();
@@ -251,7 +238,6 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? loadMore,
-    TResult? Function(String query)? search,
     TResult? Function()? toggleView,
   }) {
     return loadMore?.call();
@@ -262,7 +248,6 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? loadMore,
-    TResult Function(String query)? search,
     TResult Function()? toggleView,
     required TResult orElse(),
   }) {
@@ -277,7 +262,6 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
     required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
     return loadMore(this);
@@ -288,7 +272,6 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
     TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
     return loadMore?.call(this);
@@ -299,7 +282,6 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
     TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {
@@ -312,151 +294,6 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
 
 abstract class _LoadMoreEvent implements CompleteEvent {
   const factory _LoadMoreEvent() = _$LoadMoreEventImpl;
-}
-
-/// @nodoc
-abstract class _$$SearchEventImplCopyWith<$Res> {
-  factory _$$SearchEventImplCopyWith(
-          _$SearchEventImpl value, $Res Function(_$SearchEventImpl) then) =
-      __$$SearchEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String query});
-}
-
-/// @nodoc
-class __$$SearchEventImplCopyWithImpl<$Res>
-    extends _$CompleteEventCopyWithImpl<$Res, _$SearchEventImpl>
-    implements _$$SearchEventImplCopyWith<$Res> {
-  __$$SearchEventImplCopyWithImpl(
-      _$SearchEventImpl _value, $Res Function(_$SearchEventImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_$SearchEventImpl(
-      null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SearchEventImpl implements _SearchEvent {
-  const _$SearchEventImpl(this.query);
-
-  @override
-  final String query;
-
-  @override
-  String toString() {
-    return 'CompleteEvent.search(query: $query)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SearchEventImpl &&
-            (identical(other.query, query) || other.query == query));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, query);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SearchEventImplCopyWith<_$SearchEventImpl> get copyWith =>
-      __$$SearchEventImplCopyWithImpl<_$SearchEventImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() load,
-    required TResult Function() loadMore,
-    required TResult Function(String query) search,
-    required TResult Function() toggleView,
-  }) {
-    return search(query);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-    TResult? Function()? loadMore,
-    TResult? Function(String query)? search,
-    TResult? Function()? toggleView,
-  }) {
-    return search?.call(query);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
-    TResult Function()? loadMore,
-    TResult Function(String query)? search,
-    TResult Function()? toggleView,
-    required TResult orElse(),
-  }) {
-    if (search != null) {
-      return search(query);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadEvent value) load,
-    required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
-    required TResult Function(_ToggleViewEvent value) toggleView,
-  }) {
-    return search(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadEvent value)? load,
-    TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
-    TResult? Function(_ToggleViewEvent value)? toggleView,
-  }) {
-    return search?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadEvent value)? load,
-    TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
-    TResult Function(_ToggleViewEvent value)? toggleView,
-    required TResult orElse(),
-  }) {
-    if (search != null) {
-      return search(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SearchEvent implements CompleteEvent {
-  const factory _SearchEvent(final String query) = _$SearchEventImpl;
-
-  String get query;
-  @JsonKey(ignore: true)
-  _$$SearchEventImplCopyWith<_$SearchEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -499,7 +336,6 @@ class _$ToggleViewEventImpl implements _ToggleViewEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() loadMore,
-    required TResult Function(String query) search,
     required TResult Function() toggleView,
   }) {
     return toggleView();
@@ -510,7 +346,6 @@ class _$ToggleViewEventImpl implements _ToggleViewEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? loadMore,
-    TResult? Function(String query)? search,
     TResult? Function()? toggleView,
   }) {
     return toggleView?.call();
@@ -521,7 +356,6 @@ class _$ToggleViewEventImpl implements _ToggleViewEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? loadMore,
-    TResult Function(String query)? search,
     TResult Function()? toggleView,
     required TResult orElse(),
   }) {
@@ -536,7 +370,6 @@ class _$ToggleViewEventImpl implements _ToggleViewEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
     required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
     return toggleView(this);
@@ -547,7 +380,6 @@ class _$ToggleViewEventImpl implements _ToggleViewEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
     TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
     return toggleView?.call(this);
@@ -558,7 +390,6 @@ class _$ToggleViewEventImpl implements _ToggleViewEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
     TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {

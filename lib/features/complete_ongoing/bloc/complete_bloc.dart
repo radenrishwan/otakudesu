@@ -43,19 +43,6 @@ class CompleteBloc extends Bloc<CompleteEvent, CompleteState> {
       }
     });
 
-    on<_SearchEvent>((event, emit) {
-      final state = this.state;
-      if (state is LoadedCompleteState) {
-        final data = (state).searchData;
-        final filteredData = data
-            .where((element) =>
-                element.title.toLowerCase().contains(event.query.toLowerCase()))
-            .toList();
-
-        emit(state.copyWith(data: filteredData));
-      }
-    });
-
     on<_LoadMoreEvent>((event, emit) async {
       final state = this.state;
       if (state is LoadedCompleteState) {

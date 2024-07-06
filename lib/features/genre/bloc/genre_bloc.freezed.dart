@@ -20,21 +20,21 @@ mixin _$GenreEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String genre) load,
     required TResult Function(String genre) loadMore,
-    required TResult Function(String query) search,
+    required TResult Function() toggleView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String genre)? load,
     TResult? Function(String genre)? loadMore,
-    TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String genre)? load,
     TResult Function(String genre)? loadMore,
-    TResult Function(String query)? search,
+    TResult Function()? toggleView,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +42,21 @@ mixin _$GenreEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,7 +146,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String genre) load,
     required TResult Function(String genre) loadMore,
-    required TResult Function(String query) search,
+    required TResult Function() toggleView,
   }) {
     return load(genre);
   }
@@ -156,7 +156,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String genre)? load,
     TResult? Function(String genre)? loadMore,
-    TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
   }) {
     return load?.call(genre);
   }
@@ -166,7 +166,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String genre)? load,
     TResult Function(String genre)? loadMore,
-    TResult Function(String query)? search,
+    TResult Function()? toggleView,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -180,7 +180,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
     return load(this);
   }
@@ -190,7 +190,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
     return load?.call(this);
   }
@@ -200,7 +200,7 @@ class _$LoadEventImpl implements _LoadEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -285,7 +285,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String genre) load,
     required TResult Function(String genre) loadMore,
-    required TResult Function(String query) search,
+    required TResult Function() toggleView,
   }) {
     return loadMore(genre);
   }
@@ -295,7 +295,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String genre)? load,
     TResult? Function(String genre)? loadMore,
-    TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
   }) {
     return loadMore?.call(genre);
   }
@@ -305,7 +305,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String genre)? load,
     TResult Function(String genre)? loadMore,
-    TResult Function(String query)? search,
+    TResult Function()? toggleView,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -319,7 +319,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
     return loadMore(this);
   }
@@ -329,7 +329,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
     return loadMore?.call(this);
   }
@@ -339,7 +339,7 @@ class _$LoadMoreEventImpl implements _LoadMoreEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -359,74 +359,48 @@ abstract class _LoadMoreEvent implements GenreEvent {
 }
 
 /// @nodoc
-abstract class _$$SearchEventImplCopyWith<$Res> {
-  factory _$$SearchEventImplCopyWith(
-          _$SearchEventImpl value, $Res Function(_$SearchEventImpl) then) =
-      __$$SearchEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String query});
+abstract class _$$ToggleViewEventImplCopyWith<$Res> {
+  factory _$$ToggleViewEventImplCopyWith(_$ToggleViewEventImpl value,
+          $Res Function(_$ToggleViewEventImpl) then) =
+      __$$ToggleViewEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SearchEventImplCopyWithImpl<$Res>
-    extends _$GenreEventCopyWithImpl<$Res, _$SearchEventImpl>
-    implements _$$SearchEventImplCopyWith<$Res> {
-  __$$SearchEventImplCopyWithImpl(
-      _$SearchEventImpl _value, $Res Function(_$SearchEventImpl) _then)
+class __$$ToggleViewEventImplCopyWithImpl<$Res>
+    extends _$GenreEventCopyWithImpl<$Res, _$ToggleViewEventImpl>
+    implements _$$ToggleViewEventImplCopyWith<$Res> {
+  __$$ToggleViewEventImplCopyWithImpl(
+      _$ToggleViewEventImpl _value, $Res Function(_$ToggleViewEventImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_$SearchEventImpl(
-      null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$SearchEventImpl implements _SearchEvent {
-  const _$SearchEventImpl(this.query);
-
-  @override
-  final String query;
+class _$ToggleViewEventImpl implements _ToggleViewEvent {
+  const _$ToggleViewEventImpl();
 
   @override
   String toString() {
-    return 'GenreEvent.search(query: $query)';
+    return 'GenreEvent.toggleView()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SearchEventImpl &&
-            (identical(other.query, query) || other.query == query));
+        (other.runtimeType == runtimeType && other is _$ToggleViewEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, query);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SearchEventImplCopyWith<_$SearchEventImpl> get copyWith =>
-      __$$SearchEventImplCopyWithImpl<_$SearchEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String genre) load,
     required TResult Function(String genre) loadMore,
-    required TResult Function(String query) search,
+    required TResult Function() toggleView,
   }) {
-    return search(query);
+    return toggleView();
   }
 
   @override
@@ -434,9 +408,9 @@ class _$SearchEventImpl implements _SearchEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String genre)? load,
     TResult? Function(String genre)? loadMore,
-    TResult? Function(String query)? search,
+    TResult? Function()? toggleView,
   }) {
-    return search?.call(query);
+    return toggleView?.call();
   }
 
   @override
@@ -444,11 +418,11 @@ class _$SearchEventImpl implements _SearchEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String genre)? load,
     TResult Function(String genre)? loadMore,
-    TResult Function(String query)? search,
+    TResult Function()? toggleView,
     required TResult orElse(),
   }) {
-    if (search != null) {
-      return search(query);
+    if (toggleView != null) {
+      return toggleView();
     }
     return orElse();
   }
@@ -458,9 +432,9 @@ class _$SearchEventImpl implements _SearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadEvent value) load,
     required TResult Function(_LoadMoreEvent value) loadMore,
-    required TResult Function(_SearchEvent value) search,
+    required TResult Function(_ToggleViewEvent value) toggleView,
   }) {
-    return search(this);
+    return toggleView(this);
   }
 
   @override
@@ -468,9 +442,9 @@ class _$SearchEventImpl implements _SearchEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadEvent value)? load,
     TResult? Function(_LoadMoreEvent value)? loadMore,
-    TResult? Function(_SearchEvent value)? search,
+    TResult? Function(_ToggleViewEvent value)? toggleView,
   }) {
-    return search?.call(this);
+    return toggleView?.call(this);
   }
 
   @override
@@ -478,23 +452,18 @@ class _$SearchEventImpl implements _SearchEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadEvent value)? load,
     TResult Function(_LoadMoreEvent value)? loadMore,
-    TResult Function(_SearchEvent value)? search,
+    TResult Function(_ToggleViewEvent value)? toggleView,
     required TResult orElse(),
   }) {
-    if (search != null) {
-      return search(this);
+    if (toggleView != null) {
+      return toggleView(this);
     }
     return orElse();
   }
 }
 
-abstract class _SearchEvent implements GenreEvent {
-  const factory _SearchEvent(final String query) = _$SearchEventImpl;
-
-  String get query;
-  @JsonKey(ignore: true)
-  _$$SearchEventImplCopyWith<_$SearchEventImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _ToggleViewEvent implements GenreEvent {
+  const factory _ToggleViewEvent() = _$ToggleViewEventImpl;
 }
 
 /// @nodoc
@@ -503,10 +472,10 @@ mixin _$GenreState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)
+            List<GenreData> searchData, int page, GenreView view)
         loaded,
     required TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)
+            List<GenreData> searchData, int page, GenreView view)
         error,
   }) =>
       throw _privateConstructorUsedError;
@@ -514,10 +483,10 @@ mixin _$GenreState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         loaded,
     TResult? Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         error,
   }) =>
       throw _privateConstructorUsedError;
@@ -525,10 +494,10 @@ mixin _$GenreState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         loaded,
     TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         error,
     required TResult orElse(),
   }) =>
@@ -615,10 +584,10 @@ class _$LoadingGenreStateImpl implements LoadingGenreState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)
+            List<GenreData> searchData, int page, GenreView view)
         loaded,
     required TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)
+            List<GenreData> searchData, int page, GenreView view)
         error,
   }) {
     return loading();
@@ -629,10 +598,10 @@ class _$LoadingGenreStateImpl implements LoadingGenreState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         loaded,
     TResult? Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         error,
   }) {
     return loading?.call();
@@ -643,10 +612,10 @@ class _$LoadingGenreStateImpl implements LoadingGenreState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         loaded,
     TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         error,
     required TResult orElse(),
   }) {
@@ -705,7 +674,8 @@ abstract class _$$LoadedGenreStateImplCopyWith<$Res> {
       {String message,
       List<GenreData> data,
       List<GenreData> searchData,
-      int page});
+      int page,
+      GenreView view});
 }
 
 /// @nodoc
@@ -723,6 +693,7 @@ class __$$LoadedGenreStateImplCopyWithImpl<$Res>
     Object? data = null,
     Object? searchData = null,
     Object? page = null,
+    Object? view = null,
   }) {
     return _then(_$LoadedGenreStateImpl(
       message: null == message
@@ -741,6 +712,10 @@ class __$$LoadedGenreStateImplCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      view: null == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as GenreView,
     ));
   }
 }
@@ -752,7 +727,8 @@ class _$LoadedGenreStateImpl implements LoadedGenreState {
       {required this.message,
       required final List<GenreData> data,
       required final List<GenreData> searchData,
-      required this.page})
+      required this.page,
+      this.view = GenreView.list})
       : _data = data,
         _searchData = searchData;
 
@@ -776,10 +752,13 @@ class _$LoadedGenreStateImpl implements LoadedGenreState {
 
   @override
   final int page;
+  @override
+  @JsonKey()
+  final GenreView view;
 
   @override
   String toString() {
-    return 'GenreState.loaded(message: $message, data: $data, searchData: $searchData, page: $page)';
+    return 'GenreState.loaded(message: $message, data: $data, searchData: $searchData, page: $page, view: $view)';
   }
 
   @override
@@ -791,7 +770,8 @@ class _$LoadedGenreStateImpl implements LoadedGenreState {
             const DeepCollectionEquality().equals(other._data, _data) &&
             const DeepCollectionEquality()
                 .equals(other._searchData, _searchData) &&
-            (identical(other.page, page) || other.page == page));
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.view, view) || other.view == view));
   }
 
   @override
@@ -800,7 +780,8 @@ class _$LoadedGenreStateImpl implements LoadedGenreState {
       message,
       const DeepCollectionEquality().hash(_data),
       const DeepCollectionEquality().hash(_searchData),
-      page);
+      page,
+      view);
 
   @JsonKey(ignore: true)
   @override
@@ -814,13 +795,13 @@ class _$LoadedGenreStateImpl implements LoadedGenreState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)
+            List<GenreData> searchData, int page, GenreView view)
         loaded,
     required TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)
+            List<GenreData> searchData, int page, GenreView view)
         error,
   }) {
-    return loaded(message, data, searchData, page);
+    return loaded(message, data, searchData, page, view);
   }
 
   @override
@@ -828,13 +809,13 @@ class _$LoadedGenreStateImpl implements LoadedGenreState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         loaded,
     TResult? Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         error,
   }) {
-    return loaded?.call(message, data, searchData, page);
+    return loaded?.call(message, data, searchData, page, view);
   }
 
   @override
@@ -842,15 +823,15 @@ class _$LoadedGenreStateImpl implements LoadedGenreState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         loaded,
     TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(message, data, searchData, page);
+      return loaded(message, data, searchData, page, view);
     }
     return orElse();
   }
@@ -895,12 +876,14 @@ abstract class LoadedGenreState implements GenreState {
       {required final String message,
       required final List<GenreData> data,
       required final List<GenreData> searchData,
-      required final int page}) = _$LoadedGenreStateImpl;
+      required final int page,
+      final GenreView view}) = _$LoadedGenreStateImpl;
 
   String get message;
   List<GenreData> get data;
   List<GenreData> get searchData;
   int get page;
+  GenreView get view;
   @JsonKey(ignore: true)
   _$$LoadedGenreStateImplCopyWith<_$LoadedGenreStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -916,7 +899,8 @@ abstract class _$$ErrorGenreStateImplCopyWith<$Res> {
       {String message,
       List<GenreData> data,
       List<GenreData> searchData,
-      int page});
+      int page,
+      GenreView view});
 }
 
 /// @nodoc
@@ -934,6 +918,7 @@ class __$$ErrorGenreStateImplCopyWithImpl<$Res>
     Object? data = null,
     Object? searchData = null,
     Object? page = null,
+    Object? view = null,
   }) {
     return _then(_$ErrorGenreStateImpl(
       message: null == message
@@ -952,6 +937,10 @@ class __$$ErrorGenreStateImplCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      view: null == view
+          ? _value.view
+          : view // ignore: cast_nullable_to_non_nullable
+              as GenreView,
     ));
   }
 }
@@ -963,7 +952,8 @@ class _$ErrorGenreStateImpl implements ErrorGenreState {
       {required this.message,
       required final List<GenreData> data,
       required final List<GenreData> searchData,
-      required this.page})
+      required this.page,
+      this.view = GenreView.list})
       : _data = data,
         _searchData = searchData;
 
@@ -987,10 +977,13 @@ class _$ErrorGenreStateImpl implements ErrorGenreState {
 
   @override
   final int page;
+  @override
+  @JsonKey()
+  final GenreView view;
 
   @override
   String toString() {
-    return 'GenreState.error(message: $message, data: $data, searchData: $searchData, page: $page)';
+    return 'GenreState.error(message: $message, data: $data, searchData: $searchData, page: $page, view: $view)';
   }
 
   @override
@@ -1002,7 +995,8 @@ class _$ErrorGenreStateImpl implements ErrorGenreState {
             const DeepCollectionEquality().equals(other._data, _data) &&
             const DeepCollectionEquality()
                 .equals(other._searchData, _searchData) &&
-            (identical(other.page, page) || other.page == page));
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.view, view) || other.view == view));
   }
 
   @override
@@ -1011,7 +1005,8 @@ class _$ErrorGenreStateImpl implements ErrorGenreState {
       message,
       const DeepCollectionEquality().hash(_data),
       const DeepCollectionEquality().hash(_searchData),
-      page);
+      page,
+      view);
 
   @JsonKey(ignore: true)
   @override
@@ -1025,13 +1020,13 @@ class _$ErrorGenreStateImpl implements ErrorGenreState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)
+            List<GenreData> searchData, int page, GenreView view)
         loaded,
     required TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)
+            List<GenreData> searchData, int page, GenreView view)
         error,
   }) {
-    return error(message, data, searchData, page);
+    return error(message, data, searchData, page, view);
   }
 
   @override
@@ -1039,13 +1034,13 @@ class _$ErrorGenreStateImpl implements ErrorGenreState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         loaded,
     TResult? Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         error,
   }) {
-    return error?.call(message, data, searchData, page);
+    return error?.call(message, data, searchData, page, view);
   }
 
   @override
@@ -1053,15 +1048,15 @@ class _$ErrorGenreStateImpl implements ErrorGenreState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         loaded,
     TResult Function(String message, List<GenreData> data,
-            List<GenreData> searchData, int page)?
+            List<GenreData> searchData, int page, GenreView view)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message, data, searchData, page);
+      return error(message, data, searchData, page, view);
     }
     return orElse();
   }
@@ -1106,12 +1101,14 @@ abstract class ErrorGenreState implements GenreState {
       {required final String message,
       required final List<GenreData> data,
       required final List<GenreData> searchData,
-      required final int page}) = _$ErrorGenreStateImpl;
+      required final int page,
+      final GenreView view}) = _$ErrorGenreStateImpl;
 
   String get message;
   List<GenreData> get data;
   List<GenreData> get searchData;
   int get page;
+  GenreView get view;
   @JsonKey(ignore: true)
   _$$ErrorGenreStateImplCopyWith<_$ErrorGenreStateImpl> get copyWith =>
       throw _privateConstructorUsedError;

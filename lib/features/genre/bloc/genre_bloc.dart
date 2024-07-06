@@ -35,19 +35,6 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
       }
     });
 
-    on<_SearchEvent>((event, emit) {
-      final state = this.state;
-      if (state is LoadedGenreState) {
-        final data = (state).searchData;
-        final filteredData = data
-            .where((element) =>
-                element.title.toLowerCase().contains(event.query.toLowerCase()))
-            .toList();
-
-        emit(state.copyWith(data: filteredData));
-      }
-    });
-
     on<_LoadMoreEvent>((event, emit) async {
       final state = this.state;
       if (state is LoadedGenreState) {
@@ -77,6 +64,18 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
             ),
           );
         }
+      }
+    });
+
+    on<_ToggleViewEvent>((event, emit) {
+      final state = this.state;
+      if (state is LoadedGenreState) {
+        emit(
+          state.copyWith(
+            view:
+                state.view == GenreView.grid ? GenreView.list : GenreView.grid,
+          ),
+        );
       }
     });
   }

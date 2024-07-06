@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/features/detail/widget/genre_chip.dart';
+import 'package:myapp/features/genre/genre_model.dart';
 import 'package:myapp/global/const.dart';
-import 'package:myapp/global/data/model/anime.dart';
 import 'package:myapp/global/widget/image_widget.dart';
 
 class ListCard extends StatelessWidget {
-  final Anime anime;
+  final GenreData anime;
 
   const ListCard({
     super.key,
@@ -44,6 +45,37 @@ class ListCard extends StatelessWidget {
                 Text(
                   anime.episode,
                   style: kTypographySubtitleStyle,
+                ),
+                const SizedBox(height: 4),
+                Expanded(
+                  child: Wrap(
+                    spacing: 4,
+                    runSpacing: 4,
+                    children: anime.genre.map(
+                      (e) {
+                        if (e == '') {
+                          return const SizedBox.shrink();
+                        }
+
+                        return GenreChip(genre: e);
+                      },
+                    ).toList(),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.star,
+                      size: 16,
+                      color: Colors.yellow,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      anime.score.isEmpty ? '-' : anime.score,
+                      style: kTypographySubtitleStyle,
+                    ),
+                  ],
                 ),
               ],
             ),
