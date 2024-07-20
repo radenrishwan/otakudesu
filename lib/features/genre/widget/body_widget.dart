@@ -67,9 +67,9 @@ class BodyWidget extends StatelessWidget {
                 return GridCard(
                   anime: data[index],
                   onPressed: () {
-                    // context.pushNamed(DetailScreen.routeName, pathParameters: {
-                    //   'id': data[index].id.toString(),
-                    // });
+                    context.pushNamed(DetailScreen.routeName, pathParameters: {
+                      'id': data[index].id.toString(),
+                    });
                   },
                 );
               },

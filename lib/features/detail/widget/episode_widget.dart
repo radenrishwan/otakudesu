@@ -26,14 +26,14 @@ class EpisodeWidget extends StatelessWidget {
           final episode = episodes[index];
           return ListTile(
             onTap: () {
-              if (episode.episode.toLowerCase().contains('batch')) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Batch episode is not supported yet'),
-                  ),
-                );
-                return;
-              }
+              // if (episode.episode.toLowerCase().contains('batch')) {
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     const SnackBar(
+              //       content: Text('Batch episode is not supported yet'),
+              //     ),
+              //   );
+              //   return;
+              // }
 
               String input = episode.episode;
               RegExp regExp = RegExp(r'Episode \d+');
